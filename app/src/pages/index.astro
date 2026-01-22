@@ -7,10 +7,13 @@ import ServicesGrid from '../components/ServicesGrid.astro';
 import ProjectsCarousel from '../components/ProjectsCarousel.astro';
 import Testimonial from '../components/Testimonial.astro';
 import BottomNav from '../components/BottomNav.astro';
+import Preloader from '../components/Preloader.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
 import '../styles/global.css';
 ---
 
 <Layout title="Estepa Reformas - Inicio">
+  <Preloader />
   <Header />
   
   <main class="max-w-7xl mx-auto pb-24">
@@ -169,4 +172,5 @@ import '../styles/global.css';
   </main>
   
   <BottomNav currentPath="/" />
+  <WhatsAppButton phoneNumber="34600123456" />
 </Layout>

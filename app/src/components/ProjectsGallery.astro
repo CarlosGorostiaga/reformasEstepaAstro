@@ -1,10 +1,10 @@
 ---
-// Galería de servicios con filtros
+// ProjectsGallery.astro
 const projects = [
   {
     id: 1,
     title: 'Cocina Moderna en Madrid',
-    description: 'Minimalismo funcional y luz natural',
+    description: 'Minimalismo funcional y luz natural con acabados en mármol.',
     category: 'cocinas',
     tag: 'Reforma Integral',
     image: 'https://images.unsplash.com/photo-1556909212-d5b604d0c90d?w=800',
@@ -13,7 +13,7 @@ const projects = [
   {
     id: 2,
     title: 'Baño Zen Minimalista',
-    description: 'Microcemento y maderas nobles',
+    description: 'Microcemento y maderas nobles para un ambiente de relax.',
     category: 'baños',
     tag: 'Baños',
     image: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800',
@@ -22,7 +22,7 @@ const projects = [
   {
     id: 3,
     title: 'Ático en Malasaña',
-    description: 'Recuperación de vigas originales',
+    description: 'Recuperación de vigas originales y optimización de luz.',
     category: 'integrales',
     tag: 'Interiorismo',
     image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800',
@@ -31,7 +31,7 @@ const projects = [
   {
     id: 4,
     title: 'Reforma Cocina Contemporánea',
-    description: 'Acabados premium y electrodomésticos integrados',
+    description: 'Acabados premium y electrodomésticos integrados.',
     category: 'cocinas',
     tag: 'Cocinas',
     image: 'https://images.unsplash.com/photo-1556911220-bff31c812dba?w=800',
@@ -40,7 +40,7 @@ const projects = [
   {
     id: 5,
     title: 'Baño Principal Suite',
-    description: 'Doble lavabo y bañera exenta',
+    description: 'Doble lavabo y bañera exenta para mayor confort.',
     category: 'baños',
     tag: 'Baños',
     image: 'https://images.unsplash.com/photo-1620626011761-996317b8d101?w=800',
@@ -49,7 +49,7 @@ const projects = [
   {
     id: 6,
     title: 'Pintura y Revestimientos',
-    description: 'Acabados perfectos en todo el hogar',
+    description: 'Acabados impecables con técnicas decorativas modernas.',
     category: 'pintura',
     tag: 'Pintura',
     image: 'https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=800',
@@ -58,7 +58,7 @@ const projects = [
   {
     id: 7,
     title: 'Piso Completo Chamberí',
-    description: 'Transformación total de 90m²',
+    description: 'Transformación total de 90m² con diseño funcional.',
     category: 'integrales',
     tag: 'Reforma Integral',
     image: 'https://images.unsplash.com/photo-1556912173-46c336c7fd55?w=800',
@@ -67,209 +67,193 @@ const projects = [
   {
     id: 8,
     title: 'Cocina Americana Abierta',
-    description: 'Integración con salón y office',
+    description: 'Integración perfecta con el salón para ganar amplitud.',
     category: 'cocinas',
     tag: 'Cocinas',
-    image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800',
+    image: 'https://images.unsplash.com/photo-1588854337236-6889d631faa8?w=800',
     alt: 'Cocina abierta integrada al salón'
   }
 ];
 ---
 
-<section class="max-w-7xl mx-auto">
-  <!-- Header -->
-  <header class="px-6 py-6 pb-4">
-    <div class="flex items-center justify-between mb-2">
-      <a href="/" class="text-[#cd5a37] cursor-pointer hover:opacity-80 transition-opacity">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-        </svg>
-      </a>
-      <h2 class="text-[#1a2a3a] text-2xl font-bold tracking-tight flex-1 text-center pr-6">
-        Nuestros Servicios
+<section class="max-w-7xl mx-auto py-12">
+  <div class="px-6 mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+    <div class="max-w-2xl">
+      <span class="inline-block px-3 py-1 bg-[#cd5a37]/10 text-[#cd5a37] text-[10px] font-bold uppercase tracking-widest rounded-md mb-3">
+        Nuestro Portafolio
+      </span>
+      <h2 class="text-[#1a2a3a] text-4xl md:text-5xl font-black tracking-tighter leading-[0.9]">
+        Proyectos que <span class="text-[#cd5a37]">Inspiran</span>
       </h2>
     </div>
-  </header>
+    <p class="text-zinc-500 text-sm md:text-base max-w-xs italic border-l-2 border-[#cd5a37] pl-4">
+      Calidad artesanal y atención al detalle en cada reforma en Madrid.
+    </p>
+  </div>
 
-  <!-- Search Bar -->
-  <div class="px-6 mb-4">
-    <div class="flex items-center bg-white rounded-xl px-4 py-3 shadow-sm border border-zinc-200">
-      <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-      </svg>
+  <div class="px-6 mb-10 flex flex-col lg:flex-row gap-4">
+    <div class="relative flex-grow">
       <input 
         id="search-input"
-        class="bg-transparent border-none focus:ring-0 text-sm w-full ml-2 outline-none" 
-        placeholder="Buscar proyectos..."
         type="text"
+        placeholder="Buscar por zona o servicio..."
+        class="w-full bg-white border border-zinc-200 rounded-2xl px-12 py-4 text-sm focus:ring-2 focus:ring-[#cd5a37]/20 outline-none transition-all shadow-sm"
       />
+      <svg class="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-zinc-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+      </svg>
+    </div>
+
+    <div class="flex gap-2 overflow-x-auto pb-2 lg:pb-0 scrollbar-hide">
+      {['all', 'cocinas', 'baños', 'pintura', 'integrales'].map((filter) => (
+        <button 
+          data-filter={filter}
+          class={`filter-chip shrink-0 px-6 py-3 rounded-2xl text-[10px] font-bold uppercase tracking-widest transition-all border ${
+            filter === 'all' ? 'active active-style' : 'bg-white text-zinc-500 border-zinc-200 hover:border-[#cd5a37]'
+          }`}
+        >
+          {filter === 'all' ? 'Todo' : filter}
+        </button>
+      ))}
     </div>
   </div>
 
-  <!-- Filter Chips -->
-  <div class="flex gap-3 px-6 py-4 overflow-x-auto scrollbar-hide">
-    <button 
-      data-filter="all"
-      class="filter-chip active flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full px-6 shadow-lg transition-all"
-    >
-      <span class="text-sm font-semibold">Todo</span>
-    </button>
-    <button 
-      data-filter="cocinas"
-      class="filter-chip flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full px-6 border transition-all"
-    >
-      <span class="text-sm font-medium">Cocinas</span>
-    </button>
-    <button 
-      data-filter="baños"
-      class="filter-chip flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full px-6 border transition-all"
-    >
-      <span class="text-sm font-medium">Baños</span>
-    </button>
-    <button 
-      data-filter="pintura"
-      class="filter-chip flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full px-6 border transition-all"
-    >
-      <span class="text-sm font-medium">Pintura</span>
-    </button>
-    <button 
-      data-filter="integrales"
-      class="filter-chip flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full px-6 border transition-all"
-    >
-      <span class="text-sm font-medium">Integrales</span>
-    </button>
-  </div>
-
-  <!-- Projects Grid -->
-  <main class="px-6 pb-8">
-    <div id="projects-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-8 py-4">
-      {projects.map(project => (
+  <div class="px-6">
+    <div id="projects-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {projects.map((project, index) => (
         <div 
-          class="project-card group flex flex-col gap-4"
+          class={`project-card group relative overflow-hidden rounded-[2rem] bg-[#1a2a3a] h-[400px] transition-all duration-500 hover:-translate-y-2 ${
+            index === 0 ? 'md:col-span-2' : '' 
+          }`}
           data-category={project.category}
-          data-title={project.title.toLowerCase()}
+          data-title={project.title.toLowerCase() + " " + project.description.toLowerCase()}
         >
-          <div class="relative aspect-[4/5] overflow-hidden rounded-xl bg-white shadow-xl border border-zinc-200">
-            <div 
-              class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-              style={`background-image: url('${project.image}');`}
-            >
-            </div>
-            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-            
-            <!-- Before/After Icon -->
-            <div class="absolute top-4 right-4 bg-white/20 backdrop-blur-md rounded-full p-2 border border-white/30">
-              <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"/>
-              </svg>
-            </div>
-            
-            <!-- Category Tag -->
-            <div class="absolute top-4 left-4 bg-[#cd5a37] px-3 py-1 rounded-full">
-              <span class="text-[10px] font-bold text-white uppercase tracking-widest">
-                {project.tag}
-              </span>
-            </div>
-            
-            <!-- Project Info -->
-            <div class="absolute bottom-6 left-6 right-6">
-              <h3 class="text-white text-xl font-bold leading-tight tracking-tight mb-1">
-                {project.title}
-              </h3>
-              <p class="text-white/70 text-sm font-light">
-                {project.description}
-              </p>
-            </div>
+          <img 
+            src={project.image} 
+            alt={project.alt}
+            class="w-full h-full object-cover opacity-60 group-hover:opacity-80 group-hover:scale-110 transition-all duration-1000"
+          />
+
+          <div class="absolute inset-0 bg-gradient-to-t from-[#1a2a3a] via-[#1a2a3a]/20 to-transparent"></div>
+
+          <div class="absolute top-6 left-6">
+            <span class="bg-white/10 backdrop-blur-md text-white text-[9px] font-bold px-3 py-1.5 rounded-full border border-white/20 uppercase tracking-widest">
+              {project.tag}
+            </span>
+          </div>
+
+          <div class="absolute bottom-0 left-0 p-8 w-full translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+            <h3 class="text-white text-2xl font-bold tracking-tighter mb-2 group-hover:text-[#cd5a37] transition-colors">
+              {project.title}
+            </h3>
+            <p class="text-zinc-300 text-sm leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 line-clamp-2">
+              {project.description}
+            </p>
+          </div>
+
+          <div class="absolute top-6 right-6 w-10 h-10 bg-[#cd5a37] rounded-full flex items-center justify-center text-white opacity-0 scale-50 group-hover:opacity-100 group-hover:scale-100 transition-all duration-500 shadow-lg">
+             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path d="M5 12h14m-7-7l7 7-7 7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+             </svg>
           </div>
         </div>
       ))}
     </div>
 
-    <!-- No Results Message -->
-    <div id="no-results" class="hidden text-center py-12">
-      <svg class="w-16 h-16 text-zinc-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-      </svg>
-      <p class="text-zinc-500 text-lg">No se encontraron proyectos</p>
-      <p class="text-zinc-400 text-sm">Prueba con otro término de búsqueda</p>
+    <div id="no-results" class="hidden text-center py-20 bg-zinc-50 rounded-[2rem] border-2 border-dashed border-zinc-200 mt-6">
+       <div class="w-16 h-16 bg-zinc-100 rounded-full flex items-center justify-center mx-auto mb-4 text-zinc-400">
+         <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+         </svg>
+       </div>
+       <p class="text-[#1a2a3a] font-bold uppercase tracking-widest text-xs">No hay proyectos que coincidan</p>
+       <button id="reset-filter" class="mt-4 text-[#cd5a37] font-bold text-sm underline hover:text-[#1a2a3a] transition-colors">Ver todos los proyectos</button>
     </div>
-  </main>
+  </div>
 </section>
 
 <style>
-  /* Estilos para chips activos */
-  .filter-chip {
-    background-color: white;
-    border-color: rgb(228 228 231);
-    color: #1a2a3a;
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
   
-  .filter-chip.active {
+  .filter-chip.active-style {
     background-color: #cd5a37;
     border-color: #cd5a37;
     color: white;
-    box-shadow: 0 10px 15px -3px rgba(205, 90, 55, 0.2);
+    box-shadow: 0 10px 15px -3px rgba(205, 90, 55, 0.3);
   }
-  
-  .filter-chip:hover:not(.active) {
-    background-color: rgb(250 250 250);
-    border-color: rgb(212 212 216);
+
+  /* Efecto Glassmorphism sutil para las tarjetas en hover */
+  .project-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 2rem;
+    pointer-events: none;
   }
 </style>
 
 <script>
-  // Filtrado de proyectos
-  const filterChips = document.querySelectorAll('.filter-chip');
-  const projectCards = document.querySelectorAll('.project-card');
-  const searchInput = document.getElementById('search-input') as HTMLInputElement;
-  const noResults = document.getElementById('no-results');
+  function initGallery() {
+    const filterChips = document.querySelectorAll('.filter-chip');
+    const projectCards = document.querySelectorAll('.project-card');
+    const searchInput = document.getElementById('search-input') as HTMLInputElement;
+    const noResults = document.getElementById('no-results');
+    const resetBtn = document.getElementById('reset-filter');
 
-  let currentFilter = 'all';
+    let currentFilter = 'all';
 
-  // Filtrado por categoría
-  filterChips.forEach(chip => {
-    chip.addEventListener('click', () => {
-      // Actualizar chip activo
-      filterChips.forEach(c => c.classList.remove('active'));
-      chip.classList.add('active');
+    const applyFilters = () => {
+      const searchTerm = searchInput?.value.toLowerCase() || '';
+      let visibleCount = 0;
 
-      // Obtener filtro
-      currentFilter = chip.getAttribute('data-filter') || 'all';
-      applyFilters();
-    });
-  });
+      projectCards.forEach(card => {
+        const category = card.getAttribute('data-category') || '';
+        const title = card.getAttribute('data-title') || '';
 
-  // Búsqueda por texto
-  searchInput?.addEventListener('input', () => {
-    applyFilters();
-  });
+        const matchesFilter = currentFilter === 'all' || category === currentFilter;
+        const matchesSearch = title.includes(searchTerm);
 
-  function applyFilters() {
-    const searchTerm = searchInput?.value.toLowerCase() || '';
-    let visibleCount = 0;
+        if (matchesFilter && matchesSearch) {
+          (card as HTMLElement).style.display = 'block';
+          (card as HTMLElement).classList.add('animate-fade-in');
+          visibleCount++;
+        } else {
+          (card as HTMLElement).style.display = 'none';
+        }
+      });
 
-    projectCards.forEach(card => {
-      const category = card.getAttribute('data-category') || '';
-      const title = card.getAttribute('data-title') || '';
-
-      const matchesFilter = currentFilter === 'all' || category === currentFilter;
-      const matchesSearch = title.includes(searchTerm);
-
-      if (matchesFilter && matchesSearch) {
-        (card as HTMLElement).style.display = 'flex';
-        visibleCount++;
-      } else {
-        (card as HTMLElement).style.display = 'none';
+      if (noResults) {
+        visibleCount === 0 ? noResults.classList.remove('hidden') : noResults.classList.add('hidden');
       }
+    };
+
+    filterChips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        filterChips.forEach(c => c.classList.remove('active-style', 'bg-[#1a2a3a]', 'text-white'));
+        chip.classList.add('active-style');
+        currentFilter = chip.getAttribute('data-filter') || 'all';
+        applyFilters();
+      });
     });
 
-    // Mostrar mensaje si no hay resultados
-    if (noResults) {
-      if (visibleCount === 0) {
-        noResults.classList.remove('hidden');
-      } else {
-        noResults.classList.add('hidden');
-      }
-    }
+    searchInput?.addEventListener('input', applyFilters);
+
+    resetBtn?.addEventListener('click', () => {
+      if(searchInput) searchInput.value = '';
+      currentFilter = 'all';
+      filterChips[0].dispatchEvent(new Event('click'));
+    });
   }
+
+  // Ejecutar al cargar
+  initGallery();
+  // Para ViewTransitions de Astro
+  document.addEventListener('astro:after-swap', initGallery);
 </script>

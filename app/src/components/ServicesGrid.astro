@@ -1,5 +1,5 @@
 ---
-// Grid de servicios mejorado
+// ServiceGrid.astro mejorado
 interface Props {
   showTitle?: boolean;
   linkToDetails?: boolean;
@@ -12,142 +12,75 @@ const services = [
     slug: 'cocinas',
     icon: 'M8 5v14h11v-2H10V5H8zM4 5h2v14H4V5zm9 0h2v8h-2V5zm3 0h2v8h-2V5zm3 0h2v8h-2V5z',
     title: 'Cocinas',
-    description: 'Modernas y Funcionales',
-    features: ['Diseño personalizado', 'Materiales premium', 'Electrodomésticos']
+    description: 'Diseño funcional para el corazón de tu hogar.',
+    features: ['Islas y penínsulas', 'Encimeras premium', 'Iluminación LED']
   },
   {
     slug: 'banos',
     icon: 'M7 7a2 2 0 014 0v8H7V7zm13 2H8v10h12V9zm-2 8H10v-6h8v6z',
     title: 'Baños',
-    description: 'Tu Oasis Privado',
-    features: ['Sanitarios modernos', 'Revestimientos', 'Platos de ducha']
+    description: 'Elegancia y relax en espacios reducidos.',
+    features: ['Platos de ducha de obra', 'Grifería empotrada', 'Microcemento']
   },
   {
     slug: 'pintura',
     icon: 'M18 4V3c0-.55-.45-1-1-1H5c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1h12c.55 0 1-.45 1-1V6h1v4H9v11c0 .55.45 1 1 1h2c.55 0 1-.45 1-1v-9h8V4h-3z',
     title: 'Pintura',
-    description: 'Acabados Impecables',
-    features: ['Interior y exterior', 'Técnicas decorativas', 'Lacados']
+    description: 'Acabados de lujo con limpieza garantizada.',
+    features: ['Alisado de paredes', 'Papel pintado', 'Lacado de puertas']
   },
   {
     slug: 'reformas-integrales',
     icon: 'M12 3L2 12h3v8h6v-6h2v6h6v-8h3L12 3zm0 2.7L18 11v8h-2v-6h-8v6H6v-8l6-5.3z',
     title: 'Reformas Integrales',
-    description: 'Transformaciones Totales',
-    features: ['Proyecto completo', 'Gestión integral', 'Acabados premium']
+    description: 'Proyectos llave en mano de principio a fin.',
+    features: ['Fontanería y Electricidad', 'Albañilería', 'Carpintería']
   }
 ];
 ---
 
-<section class="py-8">
-  <!-- Section Header -->
+<section class="py-12">
   {showTitle && (
-    <div class="px-4 pb-8">
-      <div class="flex items-center justify-between mb-3">
-        <div>
-          <span class="inline-block text-[#cd5a37] text-xs font-bold uppercase tracking-wider mb-2">
-            Nuestros Servicios
-          </span>
-          <h3 class="text-[#1a2a3a] text-3xl font-bold">
-            Soluciones para tu hogar
-          </h3>
-        </div>
-        <a 
-          href="/servicios" 
-          class="hidden md:flex items-center gap-2 px-4 py-2 bg-white border-2 border-zinc-200 hover:border-[#cd5a37] rounded-full text-sm font-semibold text-[#1a2a3a] hover:text-[#cd5a37] transition-all"
-        >
-          <span>Ver Todos</span>
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-          </svg>
-        </a>
+    <div class="px-6 mb-12 flex flex-col md:flex-row md:items-end justify-between gap-4">
+      <div>
+        <span class="text-[#cd5a37] font-bold tracking-widest text-xs uppercase">Especialidades</span>
+        <h3 class="text-[#1a2a3a] text-4xl font-black tracking-tighter mt-2">¿Qué vamos a transformar?</h3>
       </div>
       {linkToDetails && (
-        <p class="text-zinc-600 text-sm mt-2 flex items-center gap-2">
-          <svg class="w-4 h-4 text-[#cd5a37]" fill="currentColor" viewBox="0 0 20 20">
-            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
-          </svg>
-          Pincha en cualquier servicio para conocerlo en detalle
-        </p>
+        <a href="/servicios" class="text-sm font-bold text-[#cd5a37] hover:underline">Ver catálogo completo →</a>
       )}
     </div>
   )}
 
-  <!-- Service Grid -->
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-4">
-    {services.map((service, index) => {
-      const Element = linkToDetails ? 'a' : 'article';
-      const href = linkToDetails ? `/servicios/${service.slug}` : undefined;
-      
-      return (
-        <Element 
-          href={href}
-          class={`group relative flex flex-col rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 ${linkToDetails ? 'cursor-pointer' : ''} overflow-hidden`}
-        >
-          {/* Línea superior decorativa */}
-          <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[#cd5a37] to-[#e07856] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
-          
-          {/* Número de servicio */}
-          <span class="absolute top-6 right-6 text-4xl font-bold text-zinc-100 group-hover:text-zinc-200 transition-colors">
-            {String(index + 1).padStart(2, '0')}
-          </span>
-          
-          {/* Icono */}
-          <div class="relative z-10 w-16 h-16 rounded-xl bg-gradient-to-br from-[#cd5a37]/10 to-[#cd5a37]/5 group-hover:from-[#cd5a37] group-hover:to-[#e07856] flex items-center justify-center mb-6 transition-all duration-300">
-            <svg class="w-8 h-8 text-[#cd5a37] group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24">
-              <path d={service.icon}/>
-            </svg>
-          </div>
-          
-          {/* Contenido */}
-          <div class="flex-1 mb-6">
-            <h2 class="text-[#1a2a3a] text-xl font-bold mb-2 group-hover:text-[#cd5a37] transition-colors">
-              {service.title}
-            </h2>
-            <p class="text-zinc-600 text-sm font-medium mb-4">
-              {service.description}
-            </p>
-            
-            {/* Features */}
-            <ul class="space-y-2">
-              {service.features.map(feature => (
-                <li class="flex items-start gap-2 text-xs text-zinc-500">
-                  <span class="inline-block w-1.5 h-1.5 rounded-full bg-[#cd5a37] mt-1.5 flex-shrink-0"></span>
-                  <span>{feature}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-          
-          {/* Link/CTA */}
-          {linkToDetails && (
-            <div class="flex items-center gap-2 text-[#cd5a37] text-sm font-semibold group-hover:gap-3 transition-all">
-              <span>Ver detalles</span>
-              <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-              </svg>
-            </div>
-          )}
-          
-          {/* Efecto hover background */}
-          <div class="absolute inset-0 bg-gradient-to-br from-[#cd5a37]/0 to-[#cd5a37]/0 group-hover:from-[#cd5a37]/5 group-hover:to-transparent transition-all duration-300 pointer-events-none rounded-2xl"></div>
-        </Element>
-      );
-    })}
-  </div>
-  
-  {/* Mobile "Ver todos" button */}
-  {showTitle && (
-    <div class="md:hidden px-4 mt-6">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 px-6">
+    {services.map((service, index) => (
       <a 
-        href="/servicios" 
-        class="w-full flex items-center justify-center gap-2 px-6 py-3 bg-white border-2 border-zinc-200 hover:border-[#cd5a37] rounded-full text-sm font-semibold text-[#1a2a3a] hover:text-[#cd5a37] transition-all"
+        href={linkToDetails ? `/servicios/${service.slug}` : '#'}
+        class="group relative bg-white p-8 rounded-[2rem] border border-zinc-100 shadow-sm hover:shadow-2xl hover:shadow-orange-900/10 transition-all duration-500 hover:-translate-y-3"
       >
-        <span>Ver Todos los Servicios</span>
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-        </svg>
+        <span class="absolute top-8 right-8 text-5xl font-black text-zinc-50 group-hover:text-[#cd5a37]/10 transition-colors">
+          {String(index + 1).padStart(2, '0')}
+        </span>
+
+        <div class="relative w-16 h-16 mb-8 flex items-center justify-center">
+          <div class="absolute inset-0 bg-[#cd5a37]/5 rounded-2xl rotate-3 group-hover:rotate-12 group-hover:bg-[#cd5a37] transition-all duration-500"></div>
+          <svg class="relative w-8 h-8 text-[#cd5a37] group-hover:text-white transition-colors duration-500" fill="currentColor" viewBox="0 0 24 24">
+            <path d={service.icon}/>
+          </svg>
+        </div>
+
+        <h4 class="text-xl font-bold text-[#1a2a3a] mb-3 group-hover:text-[#cd5a37] transition-colors">{service.title}</h4>
+        <p class="text-zinc-500 text-sm leading-relaxed mb-6">{service.description}</p>
+
+        <ul class="space-y-3">
+          {service.features.map(f => (
+            <li class="flex items-center gap-3 text-[11px] font-bold text-zinc-400 uppercase tracking-wider">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#cd5a37]"></span>
+              {f}
+            </li>
+          ))}
+        </ul>
       </a>
-    </div>
-  )}
+    ))}
+  </div>
 </section>

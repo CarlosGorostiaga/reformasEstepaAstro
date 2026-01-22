@@ -1,0 +1,26 @@
+---
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { 
+  title, 
+  description = 'Estepa Reformas - Expertos en reformas integrales, cocinas y baños en Madrid. Más de 15 años de experiencia.' 
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <title>{title}</title>
+  </head>
+  <body class="bg-[#f6f5f3] font-[Inter,system-ui,sans-serif] text-[#1a2a3a] antialiased">
+    <slot />
+  </body>
+</html>

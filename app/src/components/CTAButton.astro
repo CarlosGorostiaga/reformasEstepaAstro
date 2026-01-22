@@ -1,0 +1,21 @@
+---
+// Botón principal de llamada a la acción
+interface Props {
+  title: string;
+  subtitle: string;
+}
+
+const { title, subtitle } = Astro.props;
+---
+
+<div class="flex px-4 py-2">
+  <button class="flex items-center justify-between w-full bg-[#cd5a37] hover:bg-[#b54f30] text-white p-5 rounded-xl shadow-lg transition-all active:scale-[0.98]">
+    <div class="flex flex-col items-start">
+      <span class="text-lg font-bold">{title}</span>
+      <span class="text-xs opacity-80 font-normal">{subtitle}</span>
+    </div>
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+    </svg>
+  </button>
+</div>

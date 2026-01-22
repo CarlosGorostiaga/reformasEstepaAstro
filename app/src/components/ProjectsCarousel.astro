@@ -1,0 +1,47 @@
+---
+// Carousel de proyectos recientes
+const projects = [
+  {
+    image: 'https://images.unsplash.com/photo-1556909212-d5b604d0c90d?w=600',
+    title: 'Ático Calle Mayor',
+    description: 'Renovación Moderna Completa',
+    alt: 'Reforma de cocina de lujo con encimeras de mármol blanco'
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=600',
+    title: 'Estudio Plaza Sol',
+    description: 'Diseño Minimalista de Baño',
+    alt: 'Diseño de baño minimalista con ducha de obra'
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600',
+    title: 'Piso Malasaña',
+    description: 'Reforma Integral 85m²',
+    alt: 'Reforma integral de vivienda'
+  }
+];
+---
+
+<section>
+  <!-- Section Header -->
+  <div class="flex items-center justify-between px-4 pt-8 pb-3">
+    <h3 class="text-[#1a2a3a] text-xl font-bold">Proyectos Recientes</h3>
+  </div>
+
+  <!-- Projects Carousel -->
+  <div class="flex overflow-x-auto gap-4 px-4 pb-4 scrollbar-hide snap-x snap-mandatory">
+    {projects.map(project => (
+      <div class="min-w-[280px] lg:min-w-[320px] group cursor-pointer snap-start">
+        <div class="h-48 rounded-xl overflow-hidden shadow-md mb-2">
+          <img 
+            class="w-full h-full object-cover transition-transform group-hover:scale-105" 
+            src={project.image}
+            alt={project.alt}
+          />
+        </div>
+        <h4 class="font-bold text-sm">{project.title}</h4>
+        <p class="text-xs text-zinc-500">{project.description}</p>
+      </div>
+    ))}
+  </div>
+</section>

@@ -1,0 +1,38 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import CTAButton from '../components/CTAButton.astro';
+import ServicesGrid from '../components/ServicesGrid.astro';
+import ProjectsCarousel from '../components/ProjectsCarousel.astro';
+import Testimonial from '../components/Testimonial.astro';
+import BottomNav from '../components/BottomNav.astro';
+import '../styles/global.css';
+---
+
+<Layout title="Estepa Reformas - Inicio">
+  <Header />
+  
+  <main class="max-w-7xl mx-auto pb-24">
+    <Hero 
+      title="Excelencia en<br/>Cada Detalle"
+      subtitle="Reformas a medida diseñadas para la vida moderna."
+    />
+    
+    <CTAButton 
+      title="Solicitar Presupuesto"
+      subtitle="Consulta gratuita para tu proyecto"
+    />
+    
+    <ServicesGrid />
+    
+    <ProjectsCarousel />
+    
+    <Testimonial 
+      text="Transformaron nuestra vieja cocina en una obra maestra moderna. Profesionales de principio a fin."
+      author="Elena Rodríguez"
+    />
+  </main>
+  
+  <BottomNav />
+</Layout>

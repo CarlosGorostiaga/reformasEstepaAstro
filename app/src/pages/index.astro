@@ -9,14 +9,15 @@ import Testimonial from '../components/Testimonial.astro';
 import BottomNav from '../components/BottomNav.astro';
 import Preloader from '../components/Preloader.astro';
 import WhatsAppButton from '../components/WhatsAppButton.astro';
+import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 ---
 
 <Layout title="Estepa Reformas - Inicio">
   <Preloader />
-  <Header />
+  <Header currentPath="/" />
   
-  <main class="max-w-7xl mx-auto pb-24">
+  <main class="max-w-7xl mx-auto pb-20 md:pb-8">
     <Hero 
       title="Excelencia en<br/>Cada Detalle"
       subtitle="Reformas a medida diseñadas para la vida moderna."
@@ -173,6 +174,7 @@ import '../styles/global.css';
     </section>
   </main>
   
+  <Footer />
   <BottomNav currentPath="/" />
   <WhatsAppButton phoneNumber="34600123456" />
 </Layout>

@@ -1,0 +1,299 @@
+---
+// Formulario de contacto con Formspree mejorado
+interface Props {
+  formspreeId?: string;
+}
+
+const { formspreeId = "mgoogenj" } = Astro.props;
+---
+
+<section class="max-w-4xl mx-auto px-4 py-8">
+  <!-- Toast de notificación (oculto por defecto) -->
+  <div 
+    id="toast" 
+    class="fixed top-4 right-4 z-50 transform translate-x-[500px] transition-transform duration-300"
+  >
+    <div class="bg-green-500 text-white px-6 py-4 rounded-xl shadow-2xl flex items-center gap-3 min-w-[300px]">
+      <svg class="w-6 h-6 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+      </svg>
+      <div>
+        <p class="font-bold">¡Enviado correctamente!</p>
+        <p class="text-sm opacity-90">Te contactaremos pronto</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid lg:grid-cols-2 gap-8">
+    <!-- Columna izquierda: Info -->
+    <div class="lg:pr-8">
+      <div class="sticky top-24">
+        <h1 class="text-4xl lg:text-5xl font-bold text-[#1a2a3a] mb-4">
+          Hablemos de tu<br/>
+          <span class="text-[#cd5a37]">Proyecto</span>
+        </h1>
+        <p class="text-lg text-zinc-600 mb-8">
+          Rellena el formulario y te responderemos con un presupuesto personalizado en menos de 24 horas.
+        </p>
+
+        <!-- Ventajas -->
+        <div class="space-y-4 mb-8">
+          <div class="flex items-start gap-3">
+            <div class="w-10 h-10 rounded-full bg-[#cd5a37]/10 flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5 text-[#cd5a37]" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+            </div>
+            <div>
+              <p class="font-semibold text-[#1a2a3a]">Presupuesto sin compromiso</p>
+              <p class="text-sm text-zinc-600">Totalmente gratis y personalizado</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <div class="w-10 h-10 rounded-full bg-[#cd5a37]/10 flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5 text-[#cd5a37]" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+              </svg>
+            </div>
+            <div>
+              <p class="font-semibold text-[#1a2a3a]">Respuesta en 24h</p>
+              <p class="text-sm text-zinc-600">Garantizado en días laborables</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3">
+            <div class="w-10 h-10 rounded-full bg-[#cd5a37]/10 flex items-center justify-center flex-shrink-0">
+              <svg class="w-5 h-5 text-[#cd5a37]" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+              </svg>
+            </div>
+            <div>
+              <p class="font-semibold text-[#1a2a3a]">Asesoramiento experto</p>
+              <p class="text-sm text-zinc-600">Más de 15 años de experiencia</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contacto directo -->
+        <div class="bg-[#1a2a3a] rounded-xl p-6 text-white">
+          <p class="text-sm font-semibold mb-3">¿Prefieres llamar?</p>
+          <a href="tel:+34600123456" class="text-2xl font-bold hover:text-[#cd5a37] transition-colors">
+            +34 600 123 456
+          </a>
+          <p class="text-sm opacity-75 mt-2">Lun - Vie: 9:00 - 19:00</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Columna derecha: Formulario -->
+    <div class="bg-white rounded-2xl shadow-xl p-6 md:p-8">
+      <form 
+        id="contact-form"
+        action={`https://formspree.io/f/${formspreeId}`}
+        method="POST"
+        class="space-y-5"
+      >
+        <!-- Nombre -->
+        <div>
+          <label for="name" class="block text-sm font-semibold text-[#1a2a3a] mb-2">
+            Nombre completo *
+          </label>
+          <input 
+            type="text" 
+            id="name"
+            name="name"
+            required
+            class="w-full px-4 py-3 border-2 border-zinc-200 rounded-xl focus:ring-2 focus:ring-[#cd5a37] focus:border-[#cd5a37] outline-none transition"
+            placeholder="Juan Pérez García"
+          />
+        </div>
+
+        <!-- Grid de Email y Teléfono -->
+        <div class="grid md:grid-cols-2 gap-4">
+          <div>
+            <label for="email" class="block text-sm font-semibold text-[#1a2a3a] mb-2">
+              Email *
+            </label>
+            <input 
+              type="email" 
+              id="email"
+              name="email"
+              required
+              class="w-full px-4 py-3 border-2 border-zinc-200 rounded-xl focus:ring-2 focus:ring-[#cd5a37] focus:border-[#cd5a37] outline-none transition"
+              placeholder="juan@ejemplo.com"
+            />
+          </div>
+
+          <div>
+            <label for="phone" class="block text-sm font-semibold text-[#1a2a3a] mb-2">
+              Teléfono *
+            </label>
+            <input 
+              type="tel" 
+              id="phone"
+              name="phone"
+              required
+              class="w-full px-4 py-3 border-2 border-zinc-200 rounded-xl focus:ring-2 focus:ring-[#cd5a37] focus:border-[#cd5a37] outline-none transition"
+              placeholder="600 123 456"
+            />
+          </div>
+        </div>
+
+        <!-- Grid de Tipo de reforma y Presupuesto -->
+        <div class="grid md:grid-cols-2 gap-4">
+          <div>
+            <label for="service" class="block text-sm font-semibold text-[#1a2a3a] mb-2">
+              Tipo de reforma *
+            </label>
+            <select 
+              id="service"
+              name="service"
+              required
+              class="w-full px-4 py-3 border-2 border-zinc-200 rounded-xl focus:ring-2 focus:ring-[#cd5a37] focus:border-[#cd5a37] outline-none transition bg-white"
+            >
+              <option value="">Selecciona...</option>
+              <option value="cocina">Cocina</option>
+              <option value="baño">Baño</option>
+              <option value="pintura">Pintura</option>
+              <option value="reforma-integral">Reforma Integral</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="budget" class="block text-sm font-semibold text-[#1a2a3a] mb-2">
+              Presupuesto aprox.
+            </label>
+            <select 
+              id="budget"
+              name="budget"
+              class="w-full px-4 py-3 border-2 border-zinc-200 rounded-xl focus:ring-2 focus:ring-[#cd5a37] focus:border-[#cd5a37] outline-none transition bg-white"
+            >
+              <option value="">Selecciona...</option>
+              <option value="100-500">100€ - 500€</option>
+              <option value="500-1000">500€ - 1.000€</option>
+              <option value="1000-2000">1.000€ - 2.000€</option>
+              <option value="mas-2000">Más de 2.000€</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Ubicación -->
+        <div>
+          <label for="location" class="block text-sm font-semibold text-[#1a2a3a] mb-2">
+            Ubicación del proyecto *
+          </label>
+          <input 
+            type="text" 
+            id="location"
+            name="location"
+            required
+            class="w-full px-4 py-3 border-2 border-zinc-200 rounded-xl focus:ring-2 focus:ring-[#cd5a37] focus:border-[#cd5a37] outline-none transition"
+            placeholder="Madrid, Barrio de Salamanca"
+          />
+        </div>
+
+        <!-- Mensaje -->
+        <div>
+          <label for="message" class="block text-sm font-semibold text-[#1a2a3a] mb-2">
+            Cuéntanos sobre tu proyecto *
+          </label>
+          <textarea 
+            id="message"
+            name="message"
+            required
+            rows="4"
+            class="w-full px-4 py-3 border-2 border-zinc-200 rounded-xl focus:ring-2 focus:ring-[#cd5a37] focus:border-[#cd5a37] outline-none transition resize-none"
+            placeholder="Describe tu proyecto: qué quieres reformar, fechas estimadas, preferencias de estilo..."
+          ></textarea>
+        </div>
+
+        <!-- Checkbox privacidad -->
+        <div class="flex items-start gap-3 bg-zinc-50 p-4 rounded-xl">
+          <input 
+            type="checkbox" 
+            id="privacy"
+            name="privacy"
+            required
+            class="mt-1 w-5 h-5 text-[#cd5a37] border-zinc-300 rounded focus:ring-[#cd5a37]"
+          />
+          <label for="privacy" class="text-sm text-zinc-700">
+            Acepto la <a href="/privacidad" class="text-[#cd5a37] font-semibold hover:underline">política de privacidad</a> y el tratamiento de mis datos *
+          </label>
+        </div>
+
+        <!-- Botón submit -->
+        <button 
+          type="submit"
+          id="submit-btn"
+          class="w-full bg-[#cd5a37] hover:bg-[#b54f30] text-white font-bold py-4 px-6 rounded-xl shadow-lg transition-all active:scale-[0.98] flex items-center justify-center gap-3 group"
+        >
+          <span>Enviar Solicitud</span>
+          <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+          </svg>
+        </button>
+
+        <!-- Spinner (oculto por defecto) -->
+        <div id="loading" class="hidden text-center py-4">
+          <div class="inline-block w-8 h-8 border-4 border-[#cd5a37] border-t-transparent rounded-full animate-spin"></div>
+          <p class="text-sm text-zinc-600 mt-2">Enviando...</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+  const loading = document.getElementById('loading') as HTMLElement;
+  const toast = document.getElementById('toast') as HTMLElement;
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    // Deshabilitar botón y mostrar loading
+    submitBtn.disabled = true;
+    submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
+    loading.classList.remove('hidden');
+
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        // Mostrar toast de éxito
+        toast.style.transform = 'translateX(0)';
+        
+        // Resetear formulario
+        form.reset();
+        
+        // Ocultar toast después de 5 segundos
+        setTimeout(() => {
+          toast.style.transform = 'translateX(500px)';
+        }, 5000);
+
+        // Scroll suave al inicio
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        alert('Hubo un error al enviar el formulario. Por favor, inténtalo de nuevo.');
+      }
+    } catch (error) {
+      alert('Error de conexión. Por favor, verifica tu conexión a internet.');
+    } finally {
+      // Rehabilitar botón y ocultar loading
+      submitBtn.disabled = false;
+      submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+      loading.classList.add('hidden');
+    }
+  });
+</script>

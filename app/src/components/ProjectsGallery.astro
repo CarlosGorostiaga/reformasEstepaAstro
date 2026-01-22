@@ -66,7 +66,7 @@ const projects = [
     cover: 'https://images.unsplash.com/photo-1588854337236-6889d631faa8?w=1200',
     images: [
       'https://images.unsplash.com/photo-1588854337236-6889d631faa8?w=1600',
-      'https://images.unsplash.com/photo-1556909114-2f9d1c7b1f2d?w=1600',
+      'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1600',
       'https://images.unsplash.com/photo-1556912173-46c336c7fd55?w=1600'
     ],
     alt: 'Cocina abierta integrada en salón'
@@ -196,61 +196,108 @@ const projects = [
     </div>
   </div>
 
-  <!-- Modal -->
+  <!-- ✅ MODAL RESPONSIVE (MÓVIL OK) -->
   <div id="project-modal" class="hidden fixed inset-0 z-[60]">
+    <!-- Backdrop -->
     <div id="project-modal-backdrop" class="absolute inset-0 bg-black/70"></div>
 
-    <div class="relative h-full w-full flex items-center justify-center p-4">
-      <div class="w-full max-w-5xl bg-white rounded-2xl overflow-hidden shadow-2xl">
-        <div class="flex items-start justify-between px-5 py-4 border-b border-zinc-200 gap-4">
-          <div class="min-w-0">
-            <p id="modal-tag" class="text-[10px] font-black uppercase tracking-[0.25em] text-[#cd5a37]">Proyecto</p>
-            <h3 id="modal-title" class="text-[#1a2a3a] font-black text-xl truncate">Título</h3>
-            <p id="modal-desc" class="text-zinc-500 text-sm mt-1 line-clamp-2">Descripción</p>
-          </div>
+    <!-- Shell -->
+    <div class="relative h-full w-full flex items-end sm:items-center justify-center p-0 sm:p-4">
+      <!-- Panel -->
+      <div
+        class="relative w-full sm:max-w-5xl bg-white rounded-t-3xl sm:rounded-2xl overflow-hidden shadow-2xl max-h-[92dvh] sm:max-h-[90vh] flex flex-col"
+        style="padding-top: env(safe-area-inset-top); padding-bottom: env(safe-area-inset-bottom);"
+      >
+        <!-- Header sticky -->
+        <div class="sticky top-0 z-20 bg-white/95 backdrop-blur border-b border-zinc-200">
+          <div class="flex items-start justify-between px-5 py-4 gap-4">
+            <div class="min-w-0">
+              <p id="modal-tag" class="text-[10px] font-black uppercase tracking-[0.25em] text-[#cd5a37]">Proyecto</p>
+              <h3 id="modal-title" class="text-[#1a2a3a] font-black text-lg sm:text-xl truncate">Título</h3>
+              <p id="modal-desc" class="text-zinc-500 text-sm mt-1 line-clamp-2">Descripción</p>
+            </div>
 
-          <button id="modal-close" class="w-10 h-10 shrink-0 rounded-xl bg-zinc-100 hover:bg-zinc-200 transition flex items-center justify-center" aria-label="Cerrar" type="button">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-            </svg>
+            <button
+              id="modal-close"
+              type="button"
+              class="w-11 h-11 shrink-0 rounded-2xl bg-zinc-100 hover:bg-zinc-200 transition flex items-center justify-center"
+              aria-label="Cerrar"
+            >
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Body scroll -->
+        <div class="flex-1 overflow-y-auto">
+          <div class="grid sm:grid-cols-[1.35fr_.65fr]">
+            <!-- Media -->
+            <div class="relative bg-black">
+              <img id="modal-image" src="" alt="" class="w-full h-[45dvh] sm:h-[60vh] object-cover" />
+
+              <button
+                id="modal-prev"
+                type="button"
+                class="absolute left-3 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/90 hover:bg-white transition flex items-center justify-center shadow"
+                aria-label="Anterior"
+              >
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+                </svg>
+              </button>
+
+              <button
+                id="modal-next"
+                type="button"
+                class="absolute right-3 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/90 hover:bg-white transition flex items-center justify-center shadow"
+                aria-label="Siguiente"
+              >
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+              </button>
+
+              <div id="modal-counter" class="absolute bottom-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-black/60 text-white text-xs">
+                1 / 1
+              </div>
+            </div>
+
+            <!-- Side -->
+            <div class="p-4 sm:p-5 bg-white">
+              <p class="text-xs font-black uppercase tracking-widest text-zinc-400 mb-3">Galería</p>
+
+              <!-- Thumbs: móvil horizontal / desktop grid -->
+              <div
+                id="modal-thumbs"
+                class="flex gap-2 overflow-x-auto pb-2 scrollbar-hide sm:grid sm:grid-cols-3 sm:gap-2 sm:overflow-visible"
+              ></div>
+
+              <div class="mt-5 p-4 rounded-2xl bg-zinc-50 border border-zinc-200">
+                <p class="font-black text-[#1a2a3a]">¿Quieres algo parecido?</p>
+                <p class="text-sm text-zinc-500 mt-1">Te digo opciones, precio orientativo y plazos.</p>
+                <a href="/contacto" class="mt-3 inline-flex w-full justify-center bg-[#cd5a37] text-white font-black px-5 py-3 rounded-2xl hover:bg-[#b54f30] transition">
+                  Pedir presupuesto
+                </a>
+                <a href="https://wa.me/34600123456" target="_blank" class="mt-3 inline-flex w-full justify-center bg-[#25D366] text-white font-black px-5 py-3 rounded-2xl hover:brightness-110 transition">
+                  WhatsApp
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer móvil (cerrar cómodo) -->
+        <div class="sm:hidden border-t border-zinc-200 bg-white/95 backdrop-blur p-3">
+          <button
+            type="button"
+            id="modal-close-2"
+            class="w-full rounded-2xl bg-zinc-100 hover:bg-zinc-200 transition py-3 font-bold text-[#1a2a3a]"
+          >
+            Cerrar
           </button>
         </div>
-
-        <div class="grid lg:grid-cols-[1.3fr_.7fr]">
-          <div class="relative bg-black">
-            <img id="modal-image" src="" alt="" class="w-full h-[55vh] object-cover" />
-
-            <button id="modal-prev" class="absolute left-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/85 hover:bg-white transition flex items-center justify-center shadow" type="button" aria-label="Anterior">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-              </svg>
-            </button>
-
-            <button id="modal-next" class="absolute right-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/85 hover:bg-white transition flex items-center justify-center shadow" type="button" aria-label="Siguiente">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-              </svg>
-            </button>
-
-            <div id="modal-counter" class="absolute bottom-4 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-black/60 text-white text-xs">
-              1 / 1
-            </div>
-          </div>
-
-          <div class="p-4 lg:p-5 bg-white">
-            <p class="text-xs font-black uppercase tracking-widest text-zinc-400 mb-3">Galería</p>
-            <div id="modal-thumbs" class="grid grid-cols-3 gap-2"></div>
-
-            <div class="mt-5 p-4 rounded-2xl bg-zinc-50 border border-zinc-200">
-              <p class="font-black text-[#1a2a3a]">¿Quieres algo parecido?</p>
-              <p class="text-sm text-zinc-500 mt-1">Te digo opciones, precio orientativo y plazos.</p>
-              <a href="/contacto" class="mt-3 inline-flex w-full justify-center bg-[#cd5a37] text-white font-black px-5 py-3 rounded-2xl hover:bg-[#b54f30] transition">
-                Pedir presupuesto
-              </a>
-            </div>
-          </div>
-        </div>
-
       </div>
     </div>
   </div>

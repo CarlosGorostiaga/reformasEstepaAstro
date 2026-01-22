@@ -1,33 +1,121 @@
 ---
-// Hero Section con imagen de fondo
+// components/Hero.astro (versión mejorada tipo “web pro”)
 interface Props {
   imageUrl?: string;
   badge?: string;
   title: string;
   subtitle: string;
+  primaryHref?: string;
+  secondaryHref?: string;
+  whatsappHref?: string;
 }
 
-const { 
-  imageUrl = 'https://images.unsplash.com/photo-1556912167-f556f1f39fdf?w=1200',
-  badge = 'Est. 2008',
+const {
+  imageUrl = 'https://images.unsplash.com/photo-1556912167-f556f1f39fdf?w=1400',
+  badge = 'Madrid y alrededores',
   title,
-  subtitle
+  subtitle,
+  primaryHref = '/contacto',
+  secondaryHref = '/servicios',
+  whatsappHref = 'https://wa.me/34600123456'
 } = Astro.props;
+
+const trust = [
+  'Presupuesto 24–48h',
+  'Sin subcontratas',
+  'Trabajo limpio',
+  'Trato directo'
+];
 ---
 
-<div class="px-4 py-6">
-  <div class="relative h-80 lg:h-96 w-full overflow-hidden rounded-xl shadow-xl group">
-    <div 
-      class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" 
-      style={`background-image: linear-gradient(180deg, rgba(26, 42, 58, 0) 40%, rgba(26, 42, 58, 0.9) 100%), url('${imageUrl}');`}
-    >
+<section class="px-4 py-10">
+  <div class="relative overflow-hidden rounded-2xl bg-[#1a2a3a] shadow-2xl">
+    {/* Fondo suave */}
+    <div class="absolute inset-0">
+      <div class="absolute inset-0 bg-gradient-to-br from-[#cd5a37]/20 via-[#1a2a3a]/85 to-[#1a2a3a]"></div>
+      <img
+        src={imageUrl}
+        alt=""
+        class="w-full h-full object-cover opacity-25"
+        loading="eager"
+      />
     </div>
-    <div class="absolute bottom-0 left-0 p-6 w-full">
-      <span class="inline-block px-2 py-1 mb-2 text-[10px] font-bold tracking-widest uppercase bg-[#cd5a37] text-white rounded">
-        {badge}
-      </span>
-      <h2 class="text-white text-3xl lg:text-4xl font-bold leading-tight mb-2" set:html={title}></h2>
-      <p class="text-white/80 text-sm max-w-[280px]">{subtitle}</p>
+
+    <div class="relative z-10 p-8 lg:p-12">
+      <div class="grid lg:grid-cols-12 gap-10 items-center">
+
+        {/* Texto */}
+        <div class="lg:col-span-7 text-white">
+          <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/10 border border-white/15 backdrop-blur-md">
+            <span class="text-[10px] font-black tracking-[0.25em] uppercase">{badge}</span>
+            <span class="w-1 h-1 rounded-full bg-white/40"></span>
+            <span class="text-[12px] text-white/80 font-medium">Reformas · Baños · Cocinas · Pintura</span>
+          </div>
+
+          <h1 class="mt-6 text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter leading-[0.95]" set:html={title}></h1>
+
+          <p class="mt-5 text-base md:text-lg text-white/75 max-w-xl leading-relaxed">
+            {subtitle}
+          </p>
+
+          {/* Trust chips */}
+          <div class="mt-8 flex flex-wrap gap-3">
+            {trust.map((t) => (
+              <span class="px-4 py-2 rounded-full bg-white/10 border border-white/10 text-[12px] font-semibold text-white/85">
+                {t}
+              </span>
+            ))}
+          </div>
+
+          {/* CTAs */}
+          <div class="mt-10 flex flex-col sm:flex-row gap-4">
+            <a
+              href={primaryHref}
+              class="bg-[#cd5a37] text-white font-black px-8 py-4 rounded-2xl hover:bg-[#b54f30] transition-all shadow-2xl shadow-orange-900/30 text-center"
+            >
+              Pedir presupuesto
+            </a>
+
+            <a
+              href={whatsappHref}
+              target="_blank"
+              class="bg-[#25D366] text-white font-black px-8 py-4 rounded-2xl hover:brightness-110 transition-all flex items-center justify-center gap-3 shadow-xl"
+            >
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg>
+              WhatsApp
+            </a>
+
+            <a
+              href={secondaryHref}
+              class="bg-white/10 text-white font-bold px-8 py-4 rounded-2xl hover:bg-white/15 transition-all border border-white/15 text-center"
+            >
+              Ver servicios →
+            </a>
+          </div>
+        </div>
+
+        {/* Imagen “hero” */}
+        <div class="lg:col-span-5">
+          <div class="relative">
+            <div class="absolute -inset-4 rounded-[2rem] border border-white/10"></div>
+            <div class="relative rounded-2xl overflow-hidden aspect-[4/3] shadow-2xl bg-black/20">
+              <img
+                src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=1000"
+                alt="Reformas Estepa trabajando"
+                class="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
+
+            {/* mini tarjeta */}
+            <div class="absolute -bottom-5 left-5 right-5 bg-white rounded-2xl p-4 shadow-xl">
+              <p class="text-[#1a2a3a] font-black text-sm">Te orientamos en 2 minutos</p>
+              <p class="text-zinc-600 text-sm mt-1">Fotos + medidas aproximadas y te digo opciones.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
-</div>
+</section>

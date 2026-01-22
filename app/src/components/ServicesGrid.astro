@@ -36,13 +36,23 @@ const services = [
 ---
 
 <section>
-  <!-- Section Header (opcional) -->
+  <!-- Section Header -->
   {showTitle && (
-    <div class="flex items-center justify-between px-4 pt-8 pb-3">
-      <h3 class="text-[#1a2a3a] text-xl font-bold">Nuestra Experiencia</h3>
-      <a href="/servicios" class="text-[#cd5a37] text-sm font-bold hover:underline">
-        Ver Todo
-      </a>
+    <div class="px-4 pt-8 pb-3">
+      <div class="flex items-center justify-between mb-2">
+        <h3 class="text-[#1a2a3a] text-2xl font-bold">Mis Servicios</h3>
+        <a href="/servicios" class="text-[#cd5a37] text-sm font-bold hover:underline flex items-center gap-1">
+          <span>Ver Todo</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+      {linkToDetails && (
+        <p class="text-zinc-600 text-sm">
+          👆 Pincha en cualquier servicio para conocerlo en detalle
+        </p>
+      )}
     </div>
   )}
 
@@ -55,15 +65,26 @@ const services = [
       return (
         <Element 
           href={href}
-          class="flex flex-col gap-3 rounded-xl border border-zinc-200 bg-white p-5 shadow-sm hover:shadow-md transition-all hover:-translate-y-1 cursor-pointer"
+          class={`group flex flex-col gap-3 rounded-xl border-2 ${linkToDetails ? 'border-zinc-200 hover:border-[#cd5a37]' : 'border-zinc-200'} bg-white p-5 shadow-sm hover:shadow-xl transition-all hover:-translate-y-2 ${linkToDetails ? 'cursor-pointer' : ''} relative overflow-hidden`}
         >
-          <div class="w-12 h-12 rounded-lg bg-[#cd5a37]/10 flex items-center justify-center">
-            <svg class="w-6 h-6 text-[#cd5a37]" fill="currentColor" viewBox="0 0 24 24">
+          {/* Indicador de click (solo si es clicable) */}
+          {linkToDetails && (
+            <div class="absolute top-3 right-3 w-6 h-6 rounded-full bg-[#cd5a37]/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+              <svg class="w-4 h-4 text-[#cd5a37]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </div>
+          )}
+          
+          <div class="w-12 h-12 rounded-lg bg-[#cd5a37]/10 group-hover:bg-[#cd5a37] flex items-center justify-center transition-colors">
+            <svg class="w-6 h-6 text-[#cd5a37] group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24">
               <path d={service.icon}/>
             </svg>
           </div>
           <div>
-            <h2 class="text-[#1a2a3a] text-base font-bold">{service.title}</h2>
+            <h2 class="text-[#1a2a3a] text-base font-bold group-hover:text-[#cd5a37] transition-colors">
+              {service.title}
+            </h2>
             <p class="text-zinc-500 text-xs font-normal">{service.description}</p>
           </div>
         </Element>

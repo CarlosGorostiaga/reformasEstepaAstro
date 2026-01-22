@@ -1,14 +1,33 @@
 ---
-// Preloader/Splash screen animado
+// Preloader/Splash screen - Solo primera visita
 ---
 
 <div id="preloader" class="preloader">
   <div class="preloader-content">
-    <div class="preloader-letters">
-      <span class="letter">Estepa</span>
-      <span class="letter">Reformas</span>
+    <!-- Logo/Icono -->
+    <div class="preloader-icon">
+      <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M32 8L8 24v32h48V24L32 8z"/>
+        <rect x="24" y="36" width="16" height="20"/>
+        <rect x="12" y="28" width="8" height="8"/>
+        <rect x="44" y="28" width="8" height="8"/>
+      </svg>
+    </div>
+    
+    <!-- Texto -->
+    <div class="preloader-text">
+      <span class="brand-name">Estepa Reformas</span>
+      <span class="brand-tagline">Excelencia en cada detalle</span>
+    </div>
+    
+    <!-- Loading bar -->
+    <div class="loading-bar">
+      <div class="loading-progress"></div>
     </div>
   </div>
+  
+  <!-- Pattern de fondo -->
+  <div class="preloader-pattern"></div>
 </div>
 
 <style>
@@ -18,76 +37,174 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, #1a2a3a 0%, #cd5a37 100%);
+    background: #fafafa;
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 9999;
-    transition: opacity 0.5s ease, visibility 0.5s ease;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
   }
 
   .preloader.hidden {
     opacity: 0;
     visibility: hidden;
+    pointer-events: none;
+  }
+
+  /* Pattern de fondo */
+  .preloader-pattern {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      linear-gradient(rgba(205, 90, 55, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(205, 90, 55, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
   }
 
   .preloader-content {
+    position: relative;
+    z-index: 1;
     text-align: center;
+    animation: fadeInUp 0.8s ease;
   }
 
-  .preloader-letters {
-    display: flex;
-    gap: 1rem;
+  /* Icono */
+  .preloader-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    animation: iconPulse 2s ease-in-out infinite;
   }
 
-  .letter {
-    font-size: 4rem;
-    font-weight: 700;
-    color: white;
-    opacity: 0;
-    animation: letterPop 0.6s ease forwards;
-    font-family: 'Playfair Display', serif;
+  .preloader-icon svg {
+    width: 100%;
+    height: 100%;
+    stroke: #cd5a37;
   }
 
-  .letter:nth-child(1) {
-    animation-delay: 0.2s;
-  }
-
-  .letter:nth-child(2) {
-    animation-delay: 0.4s;
-  }
-
-  @keyframes letterPop {
-    0% {
-      opacity: 0;
-      transform: scale(0.5) translateY(50px);
+  @keyframes iconPulse {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 1;
     }
     50% {
-      transform: scale(1.2);
+      transform: scale(1.05);
+      opacity: 0.8;
+    }
+  }
+
+  /* Texto */
+  .preloader-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .brand-name {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1a2a3a;
+    font-family: 'Playfair Display', serif;
+    letter-spacing: -0.02em;
+  }
+
+  .brand-tagline {
+    font-size: 0.875rem;
+    color: #71717a;
+    font-weight: 500;
+  }
+
+  /* Loading bar */
+  .loading-bar {
+    width: 200px;
+    height: 3px;
+    background: #e4e4e7;
+    border-radius: 999px;
+    overflow: hidden;
+    margin: 0 auto;
+  }
+
+  .loading-progress {
+    height: 100%;
+    background: linear-gradient(90deg, #cd5a37, #e07856);
+    border-radius: 999px;
+    animation: loading 1.5s ease-in-out infinite;
+  }
+
+  @keyframes loading {
+    0% {
+      width: 0%;
+      margin-left: 0;
+    }
+    50% {
+      width: 70%;
+      margin-left: 0;
     }
     100% {
+      width: 0%;
+      margin-left: 100%;
+    }
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
       opacity: 1;
-      transform: scale(1) translateY(0);
+      transform: translateY(0);
     }
   }
 
   @media (max-width: 768px) {
-    .letter {
-      font-size: 3rem;
+    .preloader-icon {
+      width: 64px;
+      height: 64px;
+    }
+    
+    .brand-name {
+      font-size: 1.5rem;
+    }
+    
+    .loading-bar {
+      width: 150px;
     }
   }
 </style>
 
 <script>
-  // Ocultar preloader después de que cargue la página
-  window.addEventListener('load', () => {
+  // Solo mostrar preloader en la primera visita
+  const PRELOADER_KEY = 'estepa-preloader-shown';
+  
+  function initPreloader() {
     const preloader = document.getElementById('preloader');
-    setTimeout(() => {
-      preloader?.classList.add('hidden');
-      // Eliminar del DOM después de la transición
-      setTimeout(() => {
-        preloader?.remove();
-      }, 500);
-    }, 1500); // Mostrar por 1.5 segundos
-  });
+    if (!preloader) return;
+    
+    // Verificar si ya se mostró el preloader
+    const hasSeenPreloader = sessionStorage.getItem(PRELOADER_KEY);
+    
+    if (hasSeenPreloader) {
+      // Si ya lo vio, ocultarlo inmediatamente
+      preloader.classList.add('hidden');
+      setTimeout(() => preloader.remove(), 100);
+    } else {
+      // Primera visita: mostrar animación completa
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          preloader.classList.add('hidden');
+          sessionStorage.setItem(PRELOADER_KEY, 'true');
+          setTimeout(() => preloader.remove(), 600);
+        }, 1500);
+      });
+    }
+  }
+  
+  // Ejecutar al cargar
+  initPreloader();
+  
+  // También ejecutar en navegación del lado del cliente (Astro View Transitions)
+  document.addEventListener('astro:page-load', initPreloader);
 </script>

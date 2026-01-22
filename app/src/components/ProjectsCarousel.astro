@@ -1,47 +1,107 @@
 ---
-// Carousel de proyectos recientes
+// Carousel de proyectos recientes (mejorado)
 const projects = [
   {
-    image: 'https://images.unsplash.com/photo-1556909212-d5b604d0c90d?w=600',
+    image: 'https://images.unsplash.com/photo-1556909212-d5b604d0c90d?w=1200',
     title: 'Ático Calle Mayor',
-    description: 'Renovación Moderna Completa',
-    alt: 'Reforma de cocina de lujo con encimeras de mármol blanco'
+    description: 'Renovación moderna completa',
+    alt: 'Reforma de cocina moderna con acabados premium'
   },
   {
-    image: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=600',
+    image: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=1200',
     title: 'Estudio Plaza Sol',
-    description: 'Diseño Minimalista de Baño',
-    alt: 'Diseño de baño minimalista con ducha de obra'
+    description: 'Baño minimalista con ducha de obra',
+    alt: 'Diseño de baño minimalista'
   },
   {
-    image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600',
+    image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200',
     title: 'Piso Malasaña',
-    description: 'Reforma Integral 85m²',
+    description: 'Reforma integral 85m²',
     alt: 'Reforma integral de vivienda'
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?w=1200',
+    title: 'Cocina Barrio Salamanca',
+    description: 'Cocina abierta + iluminación LED',
+    alt: 'Cocina abierta con isla'
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1560448204-603b3fc33ddc?w=1200',
+    title: 'Baño Chamberí',
+    description: 'Microcemento + grifería empotrada',
+    alt: 'Baño con microcemento y ducha'
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?w=1200',
+    title: 'Piso Argüelles',
+    description: 'Pintura + alisado de paredes',
+    alt: 'Paredes lisas y pintura interior'
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=1200',
+    title: 'Apartamento Retiro',
+    description: 'Actualización completa de baño',
+    alt: 'Baño renovado con acabados modernos'
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200',
+    title: 'Vivienda Sanse',
+    description: 'Reforma integral + carpintería',
+    alt: 'Salón reformado con detalles de carpintería'
   }
 ];
 ---
 
-<section>
-  <!-- Section Header -->
+<section class="mt-2">
+  {/* Header */}
   <div class="flex items-center justify-between px-4 pt-8 pb-3">
-    <h3 class="text-[#1a2a3a] text-xl font-bold">Proyectos Recientes</h3>
+    <div>
+      <h3 class="text-[#1a2a3a] text-xl font-black">Proyectos recientes</h3>
+      <p class="text-sm text-zinc-500 mt-1">Algunos trabajos para que veas el acabado</p>
+    </div>
+
+    {/* opcional: link a página de proyectos */}
+    {/* <a href="/proyectos" class="text-sm font-black text-[#cd5a37] hover:underline">Ver todos →</a> */}
   </div>
 
-  <!-- Projects Carousel -->
-  <div class="flex overflow-x-auto gap-4 px-4 pb-4 scrollbar-hide snap-x snap-mandatory">
-    {projects.map(project => (
-      <div class="min-w-[280px] lg:min-w-[320px] group cursor-pointer snap-start">
-        <div class="h-48 rounded-xl overflow-hidden shadow-md mb-2">
-          <img 
-            class="w-full h-full object-cover transition-transform group-hover:scale-105" 
-            src={project.image}
-            alt={project.alt}
-          />
-        </div>
-        <h4 class="font-bold text-sm">{project.title}</h4>
-        <p class="text-xs text-zinc-500">{project.description}</p>
-      </div>
-    ))}
+  {/* Carousel */}
+  <div class="relative">
+    <div
+      class="
+        flex overflow-x-auto gap-4 pb-4
+        px-4
+        scroll-px-4
+        snap-x snap-mandatory
+        scrollbar-hide
+        scroll-smooth
+      "
+    >
+      {/* ✅ “aire” extra al inicio y final sin afectar desktop */}
+      <div class="w-2 shrink-0 sm:w-0" aria-hidden="true"></div>
+
+      {projects.map(project => (
+        <article class="min-w-[280px] sm:min-w-[300px] lg:min-w-[340px] snap-start">
+          <div class="group cursor-pointer">
+            <div class="h-48 rounded-2xl overflow-hidden shadow-md mb-3 bg-zinc-100">
+              <img
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                src={project.image}
+                alt={project.alt}
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <h4 class="font-black text-sm text-[#1a2a3a]">{project.title}</h4>
+            <p class="text-xs text-zinc-500 mt-1">{project.description}</p>
+          </div>
+        </article>
+      ))}
+
+      <div class="w-4 shrink-0 sm:w-0" aria-hidden="true"></div>
+    </div>
+
+    {/* ✅ Fade lateral (solo desktop) para que se note que se puede deslizar */}
+    <div class="hidden lg:block pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-white to-transparent"></div>
+    <div class="hidden lg:block pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-white to-transparent"></div>
   </div>
 </section>

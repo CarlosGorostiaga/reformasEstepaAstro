@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import ContactForm from '../components/ContactForm.astro';
 import BottomNav from '../components/BottomNav.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
 import '../styles/global.css';
 ---
 
@@ -15,6 +16,6 @@ import '../styles/global.css';
   <main class="min-h-screen pb-24 pt-8">
     <ContactForm />
   </main>
-  
+  <WhatsAppButton phoneNumber="34600123456" />
   <BottomNav currentPath="/contacto" />
 </Layout>

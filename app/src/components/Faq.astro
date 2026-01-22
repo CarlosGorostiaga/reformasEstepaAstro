@@ -1,0 +1,167 @@
+---
+// FAQ.astro - Preguntas frecuentes con acordeón
+const faqs = [
+  {
+    question: "¿Qué tipos de reformas realizas?",
+    answer: "Hago reformas integrales, cocinas, baños, pintura interior y exterior, albañilería, fontanería y todo tipo de trabajos de mantenimiento. Si necesitas varios oficios en un solo proyecto, me encargo de todo personalmente sin subcontratar."
+  },
+  {
+    question: "¿Cuánto tiempo tarda una reforma?",
+    answer: "Depende del alcance del proyecto. Una pintura completa puede llevar 3-5 días, un baño entre 1-2 semanas, y una cocina 2-3 semanas. En la primera visita te doy un calendario realista y me comprometo con los plazos."
+  },
+  {
+    question: "¿Cómo funciona el presupuesto?",
+    answer: "Primero hacemos una visita gratuita donde veo el trabajo y hablamos de lo que necesitas. Luego te envío un presupuesto detallado sin compromiso. Si aceptas, acordamos fechas y comenzamos. Sin sorpresas en el precio final."
+  },
+  {
+    question: "¿Trabajas solo o con un equipo?",
+    answer: "Trabajo personalmente en cada proyecto. Para trabajos grandes puedo coordinar con colaboradores de confianza, pero yo estoy presente en todo momento supervisando y asegurando la calidad del acabado."
+  },
+  {
+    question: "¿Qué zonas de Madrid cubres?",
+    answer: "Trabajo en toda la Comunidad de Madrid y alrededores. Si tu proyecto está fuera de la zona metropolitana, podemos hablarlo y ver la mejor forma de organizarlo."
+  },
+  {
+    question: "¿Proporcionas los materiales?",
+    answer: "Sí, puedo encargarme de todo: compra de materiales, gestión y ejecución. O si prefieres comprar tú los materiales, también trabajo con lo que aportes. Lo importante es que quedes contento con el resultado."
+  },
+  {
+    question: "¿Ofreces garantía en tus trabajos?",
+    answer: "Por supuesto. Todos mis trabajos tienen garantía. Si surge cualquier problema relacionado con la ejecución, me hago cargo. Mi reputación se basa en el boca a boca, así que la calidad es lo primero."
+  },
+  {
+    question: "¿Puedo ver trabajos anteriores?",
+    answer: "Claro, en la sección de proyectos de esta web tienes fotos de reformas recientes. También puedo compartirte más ejemplos por WhatsApp o en la visita inicial."
+  }
+];
+---
+
+<section class="px-4 py-20 bg-white">
+  <div class="max-w-4xl mx-auto">
+    <!-- Header -->
+    <div class="text-center mb-12">
+      <span class="inline-block px-4 py-2 mb-4 text-xs font-black tracking-widest uppercase bg-[#cd5a37]/10 text-[#cd5a37] rounded-full">
+        FAQ
+      </span>
+      <h2 class="text-3xl md:text-4xl font-black text-[#1a2a3a] mb-4">
+        Preguntas frecuentes
+      </h2>
+      <p class="text-lg text-zinc-600 max-w-2xl mx-auto">
+        Resuelvo las dudas más habituales. Si tienes otra pregunta, 
+        <a href="/contacto" class="text-[#cd5a37] font-bold hover:underline">escríbeme</a>.
+      </p>
+    </div>
+
+    <!-- Acordeón de preguntas -->
+    <div class="space-y-4">
+      {faqs.map((faq, index) => (
+        <div class="faq-item border border-zinc-200 rounded-xl overflow-hidden bg-white hover:border-zinc-300 transition-colors">
+          <button
+            class="faq-question w-full px-6 py-5 text-left flex items-center justify-between gap-4 hover:bg-zinc-50 transition-colors"
+            data-faq-index={index}
+            aria-expanded="false"
+          >
+            <span class="font-bold text-[#1a2a3a] text-lg pr-4">
+              {faq.question}
+            </span>
+            <svg 
+              class="faq-icon w-6 h-6 text-[#cd5a37] flex-shrink-0 transition-transform duration-300"
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </button>
+          <div 
+            class="faq-answer max-h-0 overflow-hidden transition-all duration-300 ease-in-out"
+            data-faq-content={index}
+          >
+            <div class="px-6 pb-5 pt-2">
+              <p class="text-zinc-700 leading-relaxed">
+                {faq.answer}
+              </p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- CTA adicional -->
+    <div class="mt-12 text-center p-6 bg-zinc-50 rounded-2xl border border-zinc-200">
+      <p class="text-zinc-700 mb-4">
+        <strong>¿No encuentras tu respuesta?</strong> Estoy aquí para ayudarte
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <a 
+          href="/contacto"
+          class="inline-flex items-center justify-center gap-2 bg-[#cd5a37] hover:bg-[#b54f30] text-white font-bold px-6 py-3 rounded-xl transition-all"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+          Enviar mensaje
+        </a>
+        <a 
+          href="https://wa.me/34600123456"
+          target="_blank"
+          class="inline-flex items-center justify-center gap-2 bg-[#25D366] hover:brightness-110 text-white font-bold px-6 py-3 rounded-xl transition-all"
+        >
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/>
+          </svg>
+          WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function initFAQ() {
+    const faqButtons = document.querySelectorAll('.faq-question');
+    
+    faqButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const index = button.getAttribute('data-faq-index');
+        const content = document.querySelector(`[data-faq-content="${index}"]`) as HTMLElement;
+        const icon = button.querySelector('.faq-icon') as HTMLElement;
+        const isExpanded = button.getAttribute('aria-expanded') === 'true';
+        
+        if (!content || !icon) return;
+        
+        // Cerrar todas las demás FAQs
+        faqButtons.forEach(otherButton => {
+          if (otherButton !== button) {
+            const otherIndex = otherButton.getAttribute('data-faq-index');
+            const otherContent = document.querySelector(`[data-faq-content="${otherIndex}"]`) as HTMLElement;
+            const otherIcon = otherButton.querySelector('.faq-icon') as HTMLElement;
+            
+            if (otherContent && otherIcon) {
+              otherButton.setAttribute('aria-expanded', 'false');
+              otherContent.style.maxHeight = '0';
+              otherIcon.style.transform = 'rotate(0deg)';
+            }
+          }
+        });
+        
+        // Toggle la FAQ clickeada
+        if (isExpanded) {
+          button.setAttribute('aria-expanded', 'false');
+          content.style.maxHeight = '0';
+          icon.style.transform = 'rotate(0deg)';
+        } else {
+          button.setAttribute('aria-expanded', 'true');
+          content.style.maxHeight = content.scrollHeight + 'px';
+          icon.style.transform = 'rotate(180deg)';
+        }
+      });
+    });
+  }
+
+  // Ejecutar al cargar la página
+  document.addEventListener('DOMContentLoaded', initFAQ);
+
+  // También ejecutar con View Transitions de Astro
+  document.addEventListener('astro:page-load', initFAQ);
+</script>

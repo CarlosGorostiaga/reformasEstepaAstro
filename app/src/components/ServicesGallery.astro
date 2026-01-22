@@ -1,0 +1,275 @@
+---
+// Galería de servicios con filtros
+const projects = [
+  {
+    id: 1,
+    title: 'Cocina Moderna en Madrid',
+    description: 'Minimalismo funcional y luz natural',
+    category: 'cocinas',
+    tag: 'Reforma Integral',
+    image: 'https://images.unsplash.com/photo-1556909212-d5b604d0c90d?w=800',
+    alt: 'Cocina moderna de alta gama con isla de mármol'
+  },
+  {
+    id: 2,
+    title: 'Baño Zen Minimalista',
+    description: 'Microcemento y maderas nobles',
+    category: 'baños',
+    tag: 'Baños',
+    image: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800',
+    alt: 'Baño minimalista de lujo con ducha de lluvia'
+  },
+  {
+    id: 3,
+    title: 'Ático en Malasaña',
+    description: 'Recuperación de vigas originales',
+    category: 'integrales',
+    tag: 'Interiorismo',
+    image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800',
+    alt: 'Ático renovado y luminoso en Madrid'
+  },
+  {
+    id: 4,
+    title: 'Reforma Cocina Contemporánea',
+    description: 'Acabados premium y electrodomésticos integrados',
+    category: 'cocinas',
+    tag: 'Cocinas',
+    image: 'https://images.unsplash.com/photo-1556911220-bff31c812dba?w=800',
+    alt: 'Cocina contemporánea con acabados de lujo'
+  },
+  {
+    id: 5,
+    title: 'Baño Principal Suite',
+    description: 'Doble lavabo y bañera exenta',
+    category: 'baños',
+    tag: 'Baños',
+    image: 'https://images.unsplash.com/photo-1620626011761-996317b8d101?w=800',
+    alt: 'Baño principal con bañera independiente'
+  },
+  {
+    id: 6,
+    title: 'Pintura y Revestimientos',
+    description: 'Acabados perfectos en todo el hogar',
+    category: 'pintura',
+    tag: 'Pintura',
+    image: 'https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=800',
+    alt: 'Paredes con acabados profesionales'
+  },
+  {
+    id: 7,
+    title: 'Piso Completo Chamberí',
+    description: 'Transformación total de 90m²',
+    category: 'integrales',
+    tag: 'Reforma Integral',
+    image: 'https://images.unsplash.com/photo-1556912173-46c336c7fd55?w=800',
+    alt: 'Reforma integral de vivienda completa'
+  },
+  {
+    id: 8,
+    title: 'Cocina Americana Abierta',
+    description: 'Integración con salón y office',
+    category: 'cocinas',
+    tag: 'Cocinas',
+    image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800',
+    alt: 'Cocina abierta integrada al salón'
+  }
+];
+---
+
+<section class="max-w-7xl mx-auto">
+  <!-- Header -->
+  <header class="px-6 py-6 pb-4">
+    <div class="flex items-center justify-between mb-2">
+      <a href="/" class="text-[#cd5a37] cursor-pointer hover:opacity-80 transition-opacity">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+        </svg>
+      </a>
+      <h2 class="text-[#1a2a3a] text-2xl font-bold tracking-tight flex-1 text-center pr-6">
+        Nuestros Servicios
+      </h2>
+    </div>
+  </header>
+
+  <!-- Search Bar -->
+  <div class="px-6 mb-4">
+    <div class="flex items-center bg-white rounded-xl px-4 py-3 shadow-sm border border-zinc-200">
+      <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+      </svg>
+      <input 
+        id="search-input"
+        class="bg-transparent border-none focus:ring-0 text-sm w-full ml-2 outline-none" 
+        placeholder="Buscar proyectos..."
+        type="text"
+      />
+    </div>
+  </div>
+
+  <!-- Filter Chips -->
+  <div class="flex gap-3 px-6 py-4 overflow-x-auto scrollbar-hide">
+    <button 
+      data-filter="all"
+      class="filter-chip active flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full px-6 shadow-lg transition-all"
+    >
+      <span class="text-sm font-semibold">Todo</span>
+    </button>
+    <button 
+      data-filter="cocinas"
+      class="filter-chip flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full px-6 border transition-all"
+    >
+      <span class="text-sm font-medium">Cocinas</span>
+    </button>
+    <button 
+      data-filter="baños"
+      class="filter-chip flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full px-6 border transition-all"
+    >
+      <span class="text-sm font-medium">Baños</span>
+    </button>
+    <button 
+      data-filter="pintura"
+      class="filter-chip flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full px-6 border transition-all"
+    >
+      <span class="text-sm font-medium">Pintura</span>
+    </button>
+    <button 
+      data-filter="integrales"
+      class="filter-chip flex h-10 shrink-0 items-center justify-center gap-x-2 rounded-full px-6 border transition-all"
+    >
+      <span class="text-sm font-medium">Integrales</span>
+    </button>
+  </div>
+
+  <!-- Projects Grid -->
+  <main class="px-6 pb-8">
+    <div id="projects-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-8 py-4">
+      {projects.map(project => (
+        <div 
+          class="project-card group flex flex-col gap-4"
+          data-category={project.category}
+          data-title={project.title.toLowerCase()}
+        >
+          <div class="relative aspect-[4/5] overflow-hidden rounded-xl bg-white shadow-xl border border-zinc-200">
+            <div 
+              class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+              style={`background-image: url('${project.image}');`}
+            >
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+            
+            <!-- Before/After Icon -->
+            <div class="absolute top-4 right-4 bg-white/20 backdrop-blur-md rounded-full p-2 border border-white/30">
+              <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"/>
+              </svg>
+            </div>
+            
+            <!-- Category Tag -->
+            <div class="absolute top-4 left-4 bg-[#cd5a37] px-3 py-1 rounded-full">
+              <span class="text-[10px] font-bold text-white uppercase tracking-widest">
+                {project.tag}
+              </span>
+            </div>
+            
+            <!-- Project Info -->
+            <div class="absolute bottom-6 left-6 right-6">
+              <h3 class="text-white text-xl font-bold leading-tight tracking-tight mb-1">
+                {project.title}
+              </h3>
+              <p class="text-white/70 text-sm font-light">
+                {project.description}
+              </p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- No Results Message -->
+    <div id="no-results" class="hidden text-center py-12">
+      <svg class="w-16 h-16 text-zinc-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+      </svg>
+      <p class="text-zinc-500 text-lg">No se encontraron proyectos</p>
+      <p class="text-zinc-400 text-sm">Prueba con otro término de búsqueda</p>
+    </div>
+  </main>
+</section>
+
+<style>
+  /* Estilos para chips activos */
+  .filter-chip {
+    background-color: white;
+    border-color: rgb(228 228 231);
+    color: #1a2a3a;
+  }
+  
+  .filter-chip.active {
+    background-color: #cd5a37;
+    border-color: #cd5a37;
+    color: white;
+    box-shadow: 0 10px 15px -3px rgba(205, 90, 55, 0.2);
+  }
+  
+  .filter-chip:hover:not(.active) {
+    background-color: rgb(250 250 250);
+    border-color: rgb(212 212 216);
+  }
+</style>
+
+<script>
+  // Filtrado de proyectos
+  const filterChips = document.querySelectorAll('.filter-chip');
+  const projectCards = document.querySelectorAll('.project-card');
+  const searchInput = document.getElementById('search-input') as HTMLInputElement;
+  const noResults = document.getElementById('no-results');
+
+  let currentFilter = 'all';
+
+  // Filtrado por categoría
+  filterChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      // Actualizar chip activo
+      filterChips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+
+      // Obtener filtro
+      currentFilter = chip.getAttribute('data-filter') || 'all';
+      applyFilters();
+    });
+  });
+
+  // Búsqueda por texto
+  searchInput?.addEventListener('input', () => {
+    applyFilters();
+  });
+
+  function applyFilters() {
+    const searchTerm = searchInput?.value.toLowerCase() || '';
+    let visibleCount = 0;
+
+    projectCards.forEach(card => {
+      const category = card.getAttribute('data-category') || '';
+      const title = card.getAttribute('data-title') || '';
+
+      const matchesFilter = currentFilter === 'all' || category === currentFilter;
+      const matchesSearch = title.includes(searchTerm);
+
+      if (matchesFilter && matchesSearch) {
+        (card as HTMLElement).style.display = 'flex';
+        visibleCount++;
+      } else {
+        (card as HTMLElement).style.display = 'none';
+      }
+    });
+
+    // Mostrar mensaje si no hay resultados
+    if (noResults) {
+      if (visibleCount === 0) {
+        noResults.classList.remove('hidden');
+      } else {
+        noResults.classList.add('hidden');
+      }
+    }
+  }
+</script>

@@ -1,0 +1,135 @@
+---
+// components/HeroHome.astro
+interface Props {
+  title: string;
+  subtitle: string;
+  primaryHref?: string;
+  secondaryHref?: string;
+  whatsappHref?: string;
+  backgroundImageUrl?: string;
+}
+
+const {
+  title,
+  subtitle,
+  primaryHref = '/contacto',
+  secondaryHref = '/servicios',
+  whatsappHref = 'https://wa.me/34600123456',
+  backgroundImageUrl = 'https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?w=1600'
+} = Astro.props;
+
+const bullets = [
+  { t: "Trato directo", d: "Hablas conmigo, no con una empresa." },
+  { t: "Presupuesto 24–48h", d: "Claro, detallado y sin compromiso." },
+  { t: "Sin subcontratas", d: "Trabajo personal en cada proyecto." }
+];
+---
+
+<section class="relative w-full overflow-hidden bg-[#1a2a3a] text-white">
+
+  {/* Fondo con imagen + overlay */}
+  <div class="absolute inset-0">
+    <img
+      src={backgroundImageUrl}
+      alt=""
+      class="w-full h-full object-cover opacity-40 scale-105 saturate-105 contrast-110"
+      loading="eager"
+      decoding="async"
+    />
+
+    <div class="absolute inset-0 bg-gradient-to-br 
+                from-[#1a2a3a]/55 
+                via-[#1a2a3a]/70 
+                to-[#1a2a3a]/85"></div>
+
+    <div class="absolute inset-0 bg-gradient-to-tr from-[#cd5a37]/12 via-transparent to-transparent"></div>
+  </div>
+
+  {/* Contenido centrado (✅ más compacto) */}
+  <div class="relative z-10 max-w-7xl mx-auto px-4 pt-10 pb-10 lg:pt-14 lg:pb-10">
+    <div class="max-w-4xl">
+
+      <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/15 text-[11px] font-black tracking-[0.25em] uppercase">
+        Estepa Reformas · Madrid
+      </span>
+
+      <h1
+        class="mt-5 text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter leading-[0.98]"
+        set:html={title}
+      ></h1>
+
+      <p class="mt-4 text-base md:text-lg text-white/80 max-w-2xl leading-relaxed">
+        {subtitle}
+      </p>
+
+      {/* CTAs (✅ menos “tocho” en móvil) */}
+      <div class="mt-8 flex flex-col sm:flex-row gap-3">
+        <a
+          href={primaryHref}
+          class="bg-[#cd5a37] text-white font-black px-7 py-3.5 rounded-2xl hover:bg-[#b54f30] transition-all shadow-2xl shadow-orange-900/30 text-center"
+        >
+          Pedir presupuesto
+        </a>
+
+        <a
+          href={whatsappHref}
+          target="_blank"
+          class="bg-[#25D366] text-white font-black px-7 py-3.5 rounded-2xl hover:brightness-110 transition-all text-center"
+        >
+          WhatsApp
+        </a>
+
+        <a
+          href={secondaryHref}
+          class="bg-white/10 text-white font-bold px-7 py-3.5 rounded-2xl hover:bg-white/15 transition-all border border-white/15 text-center"
+        >
+          Ver servicios →
+        </a>
+      </div>
+
+      {/* beneficios (✅ en móvil 1 col para no “romper” y en desktop 3 col) */}
+      <div class="mt-9 grid grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-6">
+        {bullets.map((b) => (
+          <div class="rounded-2xl bg-white/10 border border-white/10 p-4 lg:p-5 backdrop-blur-[2px]">
+            <p class="font-black text-sm">{b.t}</p>
+            <p class="text-white/75 text-sm mt-1">{b.d}</p>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </div>
+
+  {/* ✅ tira de imágenes SOLO en web (lg+) */}
+  <div class="relative z-10 w-full bg-black/10 hidden lg:block">
+    <div class="max-w-7xl mx-auto px-4 pb-4">
+      <div class="grid grid-cols-3 gap-2">
+        <div class="aspect-[4/3] rounded-xl overflow-hidden">
+          <img
+            src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=900"
+            alt="Trabajo de reforma"
+            class="w-full h-full object-cover"
+            loading="lazy"
+          />
+        </div>
+        <div class="aspect-[4/3] rounded-xl overflow-hidden">
+          <img
+            src="https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?w=900"
+            alt="Reforma"
+            class="w-full h-full object-cover"
+            loading="lazy"
+          />
+        </div>
+        <div class="aspect-[4/3] rounded-xl overflow-hidden">
+          <img
+            src="https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?w=900"
+            alt="Acabados"
+            class="w-full h-full object-cover"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>

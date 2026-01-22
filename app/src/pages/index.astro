@@ -1,8 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
-import Hero from '../components/Hero.astro';
-import CTAButton from '../components/CTAButton.astro';
+import HeroHome from '../components/HeroHome.astro';
 import ServicesGrid from '../components/ServicesGrid.astro';
 import ProjectsCarousel from '../components/ProjectsCarousel.astro';
 import Testimonial from '../components/Testimonial.astro';
@@ -16,111 +15,120 @@ import '../styles/global.css';
 <Layout title="Estepa Reformas - Inicio">
   <Preloader />
   <Header currentPath="/" />
-  
-  <main class="max-w-7xl mx-auto pb-20 md:pb-8">
-    <Hero 
+
+      {/* HERO HOME (distinto al de servicios) */}
+    <HeroHome
       title="Reformas con acabado profesional,<br/><span style='color:#cd5a37'>sin líos</span>."
       subtitle="Trato directo conmigo desde el primer día. Te digo lo que se puede hacer, cuánto cuesta y en qué plazo."
-      badge="Madrid y alrededores"
-      primaryHref="/contacto"
-      secondaryHref="/servicios"
-      whatsappHref="https://wa.me/34600123456"
     />
+  
+  <main class="max-w-7xl mx-auto pb-20 md:pb-8">
     
-    <CTAButton 
-      title="¿Tienes una idea en mente?"
-      subtitle="Cuéntame el proyecto y te doy una orientación rápida."
-    />
 
-    <!-- Sobre Nosotros / About Section -->
-    <section class="px-4 py-16">
+
+    {/* SOBRE MÍ */}
+    <section id="sobre-mi" class="px-4 py-16">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
-        <!-- Imagen -->
+        
+        {/* Imagen */}
         <div class="order-2 lg:order-1">
           <div class="relative">
             <div class="aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
               <img 
-                src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=800"
+                src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=900"
                 alt="Profesional de Estepa Reformas trabajando"
                 class="w-full h-full object-cover"
+                loading="lazy"
               />
             </div>
-            <!-- Badge flotante -->
+
+            {/* Badge flotante */}
             <div class="absolute -bottom-6 -right-6 bg-[#cd5a37] text-white p-6 rounded-2xl shadow-2xl">
-              <div class="text-4xl font-bold">5+</div>
-              <div class="text-sm opacity-90">Años de experiencia</div>
+              <div class="text-4xl font-black">5+</div>
+              <div class="text-sm opacity-90 font-medium">Años de experiencia</div>
             </div>
           </div>
         </div>
 
-        <!-- Contenido -->
+        {/* Contenido */}
         <div class="order-1 lg:order-2">
-          <span class="inline-block px-4 py-2 mb-4 text-xs font-bold tracking-widest uppercase bg-[#cd5a37]/10 text-[#cd5a37] rounded-full">
-            Sobre Mí
+          <span class="inline-block px-4 py-2 mb-4 text-xs font-black tracking-widest uppercase bg-[#cd5a37]/10 text-[#cd5a37] rounded-full">
+            Sobre mí
           </span>
-          <h2 class="text-3xl lg:text-4xl font-bold text-[#1a2a3a] mb-6">
+
+          <h2 class="text-3xl lg:text-4xl font-black text-[#1a2a3a] mb-5 tracking-tight">
             Más que reformas,<br/>
-            <span class="text-[#cd5a37]">trabajo Profesional</span>
+            <span class="text-[#cd5a37]">trabajo bien hecho</span>
           </h2>
+
           <p class="text-lg text-zinc-700 mb-4 leading-relaxed">
-            Soy <strong>Samuel Estepa</strong>, profesional de las reformas con muchos años transformando hogares en Madrid. 
-          </p>
-          <p class="text-lg text-zinc-700 mb-6 leading-relaxed">
-            <strong>Pintor, albañil, fontanero y manitas</strong> - domino todos los oficios necesarios para que tu reforma 
-            sea perfecta de principio a fin. Sin subcontratas, trabajo personal en cada proyecto.
+            Soy <strong>Samuel Estepa</strong>, profesional de las reformas en Madrid. 
+            Me implico personalmente en cada proyecto: desde la primera visita hasta el último remate.
           </p>
 
-          <!-- Especialidades -->
-          <div class="grid grid-cols-2 gap-3 mb-6">
-            <div class="flex items-center gap-2">
-              <svg class="w-5 h-5 text-[#cd5a37] flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-              </svg>
-              <span class="text-sm font-semibold text-[#1a2a3a]">Pintor Profesional</span>
-            </div>
-            <div class="flex items-center gap-2">
-              <svg class="w-5 h-5 text-[#cd5a37] flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-              </svg>
-              <span class="text-sm font-semibold text-[#1a2a3a]">Albañil Experto</span>
-            </div>
-            <div class="flex items-center gap-2">
-              <svg class="w-5 h-5 text-[#cd5a37] flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-              </svg>
-              <span class="text-sm font-semibold text-[#1a2a3a]">Fontanero</span>
-            </div>
-            <div class="flex items-center gap-2">
-              <svg class="w-5 h-5 text-[#cd5a37] flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-              </svg>
-              <span class="text-sm font-semibold text-[#1a2a3a]">Multi-oficio</span>
-            </div>
+          <p class="text-lg text-zinc-700 mb-6 leading-relaxed">
+            <strong>Pintor, albañil, fontanero y manitas</strong>. Un solo profesional, sin subcontratas,
+            para que todo quede coordinado y con un acabado fino.
+          </p>
+
+          {/* Especialidades (más limpio) */}
+          <div class="grid grid-cols-2 gap-3 mb-8">
+            {[
+              "Pintura y alisado",
+              "Albañilería",
+              "Fontanería",
+              "Reformas completas"
+            ].map((item) => (
+              <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-[#cd5a37]"></span>
+                <span class="text-sm font-semibold text-[#1a2a3a]">{item}</span>
+              </div>
+            ))}
           </div>
 
-          <a 
-            href="/contacto"
-            class="inline-flex items-center gap-2 bg-[#cd5a37] hover:bg-[#b54f30] text-white font-bold px-6 py-3 rounded-xl transition-all"
-          >
-            <span>Hablemos de tu proyecto</span>
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-            </svg>
-          </a>
+          {/* CTAs de sección (no repetir lo del hero, pero sí guiar) */}
+          <div class="flex flex-col sm:flex-row gap-3">
+            <a 
+              href="/contacto"
+              class="inline-flex items-center justify-center gap-2 bg-[#cd5a37] hover:bg-[#b54f30] text-white font-black px-6 py-3 rounded-xl transition-all"
+            >
+              Hablemos
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+              </svg>
+            </a>
+
+            <a 
+              href="#proyectos"
+              class="inline-flex items-center justify-center gap-2 bg-white border border-zinc-200 hover:bg-zinc-50 text-[#1a2a3a] font-black px-6 py-3 rounded-xl transition-all"
+            >
+              Ver trabajos
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
         </div>
       </div>
     </section>
     
-    <!-- Services Grid con indicación clara de clicabilidad -->
-    <ServicesGrid linkToDetails={true} />
+    {/* SERVICIOS */}
+    <section id="servicios">
+      <ServicesGrid linkToDetails={true} />
+    </section>
     
-    <ProjectsCarousel />
+    {/* PROYECTOS */}
+    <section id="proyectos">
+      <ProjectsCarousel />
+    </section>
 
-    <!-- Testimonios -->
-    <section class="px-4 py-20 bg-zinc-50">
+    {/* TESTIMONIOS */}
+    <section id="opiniones" class="px-4 py-20 bg-zinc-50">
       <div class="max-w-5xl mx-auto text-center">
-        <span class="text-[#cd5a37] font-bold tracking-widest uppercase text-xs">Opiniones Reales</span>
-        <h2 class="text-3xl md:text-4xl font-bold text-[#1a2a3a] mt-2 mb-12">Lo que dicen mis clientes</h2>
+        <span class="text-[#cd5a37] font-black tracking-widest uppercase text-xs">Opiniones reales</span>
+        <h2 class="text-3xl md:text-4xl font-black text-[#1a2a3a] mt-2 mb-12">
+          Lo que dicen mis clientes
+        </h2>
 
         <div class="grid md:grid-cols-2 gap-8">
           <Testimonial 
@@ -137,42 +145,50 @@ import '../styles/global.css';
           />
         </div>
         
-        <div class="mt-10 flex items-center justify-center gap-2 opacity-50">
+        <div class="mt-10 flex items-center justify-center gap-2 opacity-60">
           <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12.48 10.92v3.28h4.78c-.19 1.02-1.2 3.08-4.78 3.08-3.09 0-5.61-2.56-5.61-5.71s2.52-5.71 5.61-5.71c1.76 0 2.94.75 3.61 1.39l2.58-2.49C16.99 2.59 14.92 1.5 12.48 1.5 6.69 1.5 2 6.2 2 12s4.69 10.5 10.48 10.5c5.96 0 10.28-4.13 10.28-10.19 0-.69-.07-1.21-.16-1.73h-10.12z"/></svg>
           <span class="text-sm font-medium">Reseñas verificadas de clientes</span>
         </div>
       </div>
     </section>
 
-    <!-- CTA Final -->
+    {/* CTA FINAL (perfecto como lo tienes, solo un pelín menos “gradiente agresivo”) */}
     <section class="px-4 py-8">
-      <div class="bg-gradient-to-br from-[#cd5a37] to-[#a84a2e] rounded-2xl p-8 lg:p-12 text-center text-white shadow-2xl">
-        <h2 class="text-3xl lg:text-4xl font-bold mb-4">
-          ¿Hablamos de tu proyecto?
-        </h2>
-        <p class="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
-          Cuéntame qué necesitas y te daré un presupuesto sin compromiso
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a 
-            href="/contacto"
-            class="inline-flex items-center justify-center gap-2 bg-white text-[#cd5a37] font-bold px-8 py-4 rounded-xl hover:bg-white/90 transition-all shadow-lg"
-          >
-            <span>Pedir Presupuesto</span>
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-            </svg>
-          </a>
-          <a 
-            href="https://wa.me/34600123456"
-            target="_blank"
-            class="inline-flex items-center justify-center gap-2 bg-[#25D366] hover:bg-[#22c55e] text-white font-bold px-8 py-4 rounded-xl transition-all"
-          >
-            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-            </svg>
-            <span>WhatsApp</span>
-          </a>
+      <div class="bg-[#1a2a3a] rounded-2xl p-8 lg:p-12 text-center text-white shadow-2xl relative overflow-hidden">
+        <div class="absolute inset-0 opacity-40">
+          <div class="absolute -top-24 -right-24 w-80 h-80 rounded-full bg-[#cd5a37]/40 blur-3xl"></div>
+        </div>
+
+        <div class="relative">
+          <h2 class="text-3xl lg:text-4xl font-black mb-4">
+            ¿Hablamos de tu proyecto?
+          </h2>
+          <p class="text-lg text-white/80 mb-8 max-w-2xl mx-auto">
+            Cuéntame qué necesitas y te doy un presupuesto sin compromiso.
+          </p>
+
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a 
+              href="/contacto"
+              class="inline-flex items-center justify-center gap-2 bg-[#cd5a37] hover:bg-[#b54f30] text-white font-black px-8 py-4 rounded-xl transition-all shadow-lg"
+            >
+              Pedir presupuesto
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+              </svg>
+            </a>
+
+            <a 
+              href="https://wa.me/34600123456"
+              target="_blank"
+              class="inline-flex items-center justify-center gap-2 bg-[#25D366] hover:brightness-110 text-white font-black px-8 py-4 rounded-xl transition-all"
+            >
+              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/>
+              </svg>
+              WhatsApp
+            </a>
+          </div>
         </div>
       </div>
     </section>

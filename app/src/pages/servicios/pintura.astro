@@ -2,40 +2,51 @@
 import Layout from '../../layouts/Layout.astro';
 import ServiceDetail from '../../components/ServicesDetail.astro';
 import BottomNav from '../../components/BottomNav.astro';
+import WhatsAppButton from '../../components/WhatsAppButton.astro';
+import Footer from '../../components/Footer.astro';
 import '../../styles/global.css';
 
 const service = {
   title: 'Pintura Profesional',
-  subtitle: 'Acabados Impecables',
-  category: 'Renovación Estética',
-  description: 'Pintores profesionales con años de experiencia. Utilizamos pinturas de alta calidad, preparación perfecta de superficies y técnicas avanzadas para conseguir acabados lisos, uniformes y duraderos. Trabajamos con pinturas ecológicas sin olores.',
+  subtitle: 'Paredes perfectas, acabados limpios y sin sorpresas',
+  category: 'Pintura · Madrid',
+  description:
+    'Pintura interior y exterior con preparación en condiciones: protección de suelos y muebles, reparación de desperfectos, lijado y sellado si hace falta. Trabajo con pinturas lavables y duraderas, y te asesoro con el color y el tipo de acabado (mate, seda, satinado) para que quede fino y aguante el día a día.',
   heroImage: 'https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=1200',
-  time: '3-7 días hábiles',
-  materials: 'Pinturas Premium Ecológicas',
+  time: '3–7 días hábiles (según m², estado de paredes y nº de manos)',
+  materials:
+    'Pinturas lavables de calidad (bajo olor / ecológicas según necesidad), imprimaciones, masillas y selladores. Materiales elegidos según el estado de la superficie y el acabado deseado.',
   gallery: [
     {
-      image: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=800',
-      title: 'Pintura Interior',
-      location: 'Madrid, 2024'
+      image: 'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=900',
+      title: 'Pintura interior con acabado uniforme',
+      location: 'Madrid'
     },
     {
-      image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?w=800',
-      title: 'Acabados Lisos',
-      location: 'Barcelona, 2024'
+      image: 'https://images.unsplash.com/photo-1615873968403-89e068629265?w=900',
+      title: 'Colores actuales y líneas limpias',
+      location: 'Madrid'
     },
     {
-      image: 'https://images.unsplash.com/photo-1615873968403-89e068629265?w=800',
-      title: 'Colores Modernos',
-      location: 'Valencia, 2023'
+      image: 'https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=900',
+      title: 'Preparación y acabado profesional',
+      location: 'Madrid'
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1581579185169-20b84c2c4c3a?w=900',
+      title: 'Paredes listas para estrenar',
+      location: 'Madrid'
     }
   ]
 };
 ---
 
-<Layout 
+<Layout
   title="Pintura Profesional - Estepa Reformas"
-  description="Servicio de pintura profesional con acabados perfectos. Pinturas ecológicas sin olores."
+  description="Servicio de pintura profesional en Madrid: preparación, reparación y acabados finos. Presupuesto sin compromiso."
 >
   <ServiceDetail service={service} />
+  <Footer />
+  <WhatsAppButton phoneNumber="34600123456" />
   <BottomNav currentPath="/servicios" />
 </Layout>

@@ -2,40 +2,51 @@
 import Layout from '../../layouts/Layout.astro';
 import ServiceDetail from '../../components/ServicesDetail.astro';
 import BottomNav from '../../components/BottomNav.astro';
+import WhatsAppButton from '../../components/WhatsAppButton.astro';
+import Footer from '../../components/Footer.astro';
 import '../../styles/global.css';
 
 const service = {
   title: 'Remodelación de Cocinas',
-  subtitle: 'Modernas y Funcionales',
-  category: 'Renovación Premium',
-  description: 'Transformamos tu cocina en el corazón de tu hogar. Utilizamos materiales de primera calidad, electrodomésticos de alta gama y acabados perfectos para garantizar durabilidad y un diseño atemporal que se adapta a tu estilo de vida.',
+  subtitle: 'Modernas, resistentes y pensadas para tu día a día',
+  category: 'Cocinas · Madrid',
+  description:
+    'Convertimos tu cocina en un espacio cómodo y funcional, bien distribuido y con acabados que aguantan el trote. Te asesoro con el diseño y la elección de materiales según tu presupuesto: encimeras, frentes, suelos y herrajes de marcas reconocidas, buscando siempre un resultado limpio y duradero.',
   heroImage: 'https://images.unsplash.com/photo-1556909212-d5b604d0c90d?w=1200',
-  time: '15-20 días hábiles',
-  materials: 'Silestone, Dekton, Madera',
+  time: '15–20 días hábiles (según alcance)',
+  materials:
+    'Encimeras (porcelánico / cuarzo / laminado premium), muebles a medida, herrajes y grifería de calidad, revestimientos y suelos resistentes. Materiales según necesidad y presupuesto.',
   gallery: [
     {
-      image: 'https://images.unsplash.com/photo-1556911220-bff31c812dba?w=800',
-      title: 'Cocina Minimalista',
-      location: 'Madrid, 2024'
+      image: 'https://images.unsplash.com/photo-1556911220-bff31c812dba?w=900',
+      title: 'Cocina minimalista luminosa',
+      location: 'Madrid'
     },
     {
-      image: 'https://images.unsplash.com/photo-1556909212-d5b604d0c90d?w=800',
-      title: 'Estilo Contemporáneo',
-      location: 'Barcelona, 2024'
+      image: 'https://images.unsplash.com/photo-1556909212-d5b604d0c90d?w=900',
+      title: 'Cocina con isla y encimera premium',
+      location: 'Madrid'
     },
     {
-      image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800',
-      title: 'Cocina Americana',
-      location: 'Valencia, 2023'
+      image: 'https://images.unsplash.com/photo-1556912167-f556f1f39fdf?w=900',
+      title: 'Acabados limpios y orden visual',
+      location: 'Madrid'
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1588854337236-6889d631faa8?w=900',
+      title: 'Cocina abierta al salón',
+      location: 'Madrid'
     }
   ]
 };
 ---
 
-<Layout 
+<Layout
   title="Remodelación de Cocinas - Estepa Reformas"
-  description="Transformamos tu cocina con diseños modernos y funcionales. Presupuesto sin compromiso."
+  description="Reformas de cocina modernas y funcionales en Madrid. Te asesoro con materiales y distribución. Presupuesto sin compromiso."
 >
   <ServiceDetail service={service} />
+  <Footer />
+  <WhatsAppButton phoneNumber="34600123456" />
   <BottomNav currentPath="/servicios" />
 </Layout>

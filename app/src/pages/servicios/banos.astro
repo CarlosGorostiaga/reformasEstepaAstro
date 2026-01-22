@@ -2,40 +2,46 @@
 import Layout from '../../layouts/Layout.astro';
 import ServiceDetail from '../../components/ServicesDetail.astro';
 import BottomNav from '../../components/BottomNav.astro';
+import WhatsAppButton from '../../components/WhatsAppButton.astro';
+import Footer from '../../components/Footer.astro';
 import '../../styles/global.css';
 
 const service = {
-  title: 'Remodelación de Baños',
-  subtitle: 'Tu Oasis Privado',
-  category: 'Renovación Premium',
-  description: 'Transformamos tu baño en un santuario de relajación. Utilizamos materiales de primera calidad, grifería de alta gama y revestimientos cerámicos seleccionados para garantizar durabilidad y un diseño atemporal.',
-  heroImage: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=1200',
-  time: '10-15 días hábiles',
-  materials: 'Mármol y Porcelanato',
+  title: 'Reforma de Baños',
+  subtitle: 'Un baño cómodo, bonito y sin sorpresas',
+  category: 'Baños · Madrid y alrededores',
+  description:
+    'Convertimos tu baño en un espacio cómodo y elegante, cuidando cada detalle: distribución, impermeabilización, ventilación, iluminación y acabados. Trabajamos con materiales de primeras marcas y soluciones duraderas para que el resultado se mantenga impecable con el paso del tiempo.',
+  heroImage: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=1600',
+  time: '10–15 días hábiles (según alcance)',
+  materials:
+    'Porcelánico premium, microcemento (opcional), grifería de calidad (Grohe/Roca o equivalente), mamparas a medida, sanitarios y muebles de baño de primeras marcas.',
   gallery: [
     {
-      image: 'https://images.unsplash.com/photo-1620626011761-996317b8d101?w=800',
+      image: 'https://images.unsplash.com/photo-1620626011761-996317b8d101?w=1000',
       title: 'Baño Minimalista',
-      location: 'Madrid, 2024'
+      location: 'Madrid · 2024'
     },
     {
-      image: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800',
+      image: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=1000',
       title: 'Toque Moderno',
-      location: 'Barcelona, 2023'
+      location: 'Madrid · 2023'
     },
     {
-      image: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=800',
+      image: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=1000',
       title: 'Estilo Zen',
-      location: 'Valencia, 2024'
+      location: 'Madrid · 2024'
     }
   ]
 };
 ---
 
-<Layout 
-  title="Remodelación de Baños - Estepa Reformas"
-  description="Reforma completa de baños con materiales premium. Presupuesto gratuito."
+<Layout
+  title="Reforma de Baños - Estepa Reformas"
+  description="Reforma completa de baños con acabados premium. Presupuesto gratuito en Madrid y alrededores."
 >
   <ServiceDetail service={service} />
+  <Footer />
+  <WhatsAppButton phoneNumber="34600123456" />
   <BottomNav currentPath="/servicios" />
 </Layout>

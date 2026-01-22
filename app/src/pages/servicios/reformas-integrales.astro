@@ -2,51 +2,51 @@
 import Layout from '../../layouts/Layout.astro';
 import ServiceDetail from '../../components/ServicesDetail.astro';
 import BottomNav from '../../components/BottomNav.astro';
+import WhatsAppButton from '../../components/WhatsAppButton.astro';
+import Footer from '../../components/Footer.astro';
 import '../../styles/global.css';
 
 const service = {
   title: 'Reformas Integrales',
-  subtitle: 'Transformaciones Totales',
-  category: 'Renovación Completa',
-  description: 'Reforma completa de tu hogar de principio a fin. Nos encargamos de todo: distribución, albañilería, fontanería, electricidad, carpintería y acabados. Gestión integral del proyecto con licencias, permisos y coordinación de todos los gremios. Proyecto llave en mano.',
+  subtitle: 'Tu casa, como nueva (y bien hecha)',
+  category: 'Reforma integral · Madrid',
+  description:
+    'Reforma completa de vivienda con planificación clara desde el primer día: revisión del estado, propuesta de distribución, demolición y albañilería, fontanería y electricidad si hace falta, carpintería y acabados. Trato directo y seguimiento durante toda la obra para que sepas qué se hace, cuándo y por qué. Si tu reforma requiere permisos o técnico, te lo indico desde el principio y lo gestionamos contigo.',
   heroImage: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1200',
-  time: '30-60 días según m²',
-  materials: 'Todo incluido - Alta Calidad',
+  time: '30–60 días (según m², alcance y estado inicial)',
+  materials:
+    'Materiales seleccionados según proyecto: pavimentos (porcelánico/laminado), pintura y preparación, grifería y sanitarios, platos de ducha, cerámica, iluminación, mecanismos eléctricos y carpintería. Siempre opciones de calidad y alternativas por presupuesto.',
   gallery: [
     {
-      image: 'https://images.unsplash.com/photo-1556912173-46c336c7fd55?w=800',
-      title: 'Piso Completo',
-      location: 'Madrid, 2024'
+      image: 'https://images.unsplash.com/photo-1556912173-46c336c7fd55?w=900',
+      title: 'Reforma integral de vivienda',
+      location: 'Madrid'
     },
     {
-      image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800',
-      title: 'Reforma Total',
-      location: 'Barcelona, 2023'
+      image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=900',
+      title: 'Salón + cocina renovados',
+      location: 'Madrid'
     },
     {
-      image: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800',
-      title: 'Ático Renovado',
-      location: 'Valencia, 2024'
+      image: 'https://images.unsplash.com/photo-1560448204-603b3fc33ddc?w=900',
+      title: 'Dormitorio y acabados',
+      location: 'Madrid'
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900',
+      title: 'Vivienda luminosa tras reforma',
+      location: 'Madrid'
     }
   ]
 };
 ---
 
-<Layout 
+<Layout
   title="Reformas Integrales - Estepa Reformas"
-  description="Reforma integral de tu vivienda. Proyecto completo llave en mano con todas las garantías."
+  description="Reforma integral de vivienda en Madrid: planificación, ejecución y acabados profesionales. Presupuesto sin compromiso."
 >
   <ServiceDetail service={service} />
+  <Footer />
+  <WhatsAppButton phoneNumber="34600123456" />
   <BottomNav currentPath="/servicios" />
 </Layout>
-```
-
----
-
-## ✅ **Resumen de la estructura:**
-```
-/servicios                    → Lista de servicios (grid)
-/servicios/cocinas            → Detalle cocinas
-/servicios/banos              → Detalle baños
-/servicios/pintura            → Detalle pintura
-/servicios/reformas-integrales → Detalle reformas integrales

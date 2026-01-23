@@ -1,5 +1,5 @@
 ---
-// ServiceGrid.astro mejorado
+// ServicesGrid.astro (con animaciones on-scroll + stagger)
 interface Props {
   showTitle?: boolean;
   linkToDetails?: boolean;
@@ -37,26 +37,35 @@ const services = [
     features: ['Fontanería y Electricidad', 'Albañilería', 'Carpintería']
   }
 ];
+
+// Delays disponibles en tu CSS: 100..500
+const delayClass = (i: number) => {
+  const delays = ['delay-100', 'delay-200', 'delay-300', 'delay-400', 'delay-500'];
+  return delays[i % delays.length];
+};
 ---
 
 <section class="py-12">
   {showTitle && (
-    <div class="px-6 mb-12 flex flex-col md:flex-row md:items-end justify-between gap-4">
+    <div class="px-6 mb-12 flex flex-col md:flex-row md:items-end justify-between gap-4 animate-on-scroll">
       <div>
         <span class="text-[#cd5a37] font-bold tracking-widest text-xs uppercase">Especialidades</span>
         <h3 class="text-[#1a2a3a] text-4xl font-black tracking-tighter mt-2">¿Qué vamos a transformar?</h3>
       </div>
+
       {linkToDetails && (
-        <a href="/servicios" class="text-sm font-bold text-[#cd5a37] hover:underline">Ver catálogo completo →</a>
+        <a href="/servicios" class="text-sm font-bold text-[#cd5a37] hover:underline">
+          Ver catálogo completo →
+        </a>
       )}
     </div>
   )}
 
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 px-6">
     {services.map((service, index) => (
-      <a 
+      <a
         href={linkToDetails ? `/servicios/${service.slug}` : '#'}
-        class="group relative bg-white p-8 rounded-[2rem] border border-zinc-100 shadow-sm hover:shadow-2xl hover:shadow-orange-900/10 transition-all duration-500 hover:-translate-y-3"
+        class={`group relative bg-white p-8 rounded-[2rem] border border-zinc-100 shadow-sm hover:shadow-2xl hover:shadow-orange-900/10 transition-all duration-500 hover:-translate-y-3 animate-on-scroll ${delayClass(index)}`}
       >
         <span class="absolute top-8 right-8 text-5xl font-black text-zinc-50 group-hover:text-[#cd5a37]/10 transition-colors">
           {String(index + 1).padStart(2, '0')}
@@ -65,16 +74,26 @@ const services = [
         <div class="relative w-16 h-16 mb-8 flex items-center justify-center">
           <div class="absolute inset-0 bg-[#cd5a37]/5 rounded-2xl rotate-3 group-hover:rotate-12 group-hover:bg-[#cd5a37] transition-all duration-500"></div>
           <svg class="relative w-8 h-8 text-[#cd5a37] group-hover:text-white transition-colors duration-500" fill="currentColor" viewBox="0 0 24 24">
-            <path d={service.icon}/>
+            <path d={service.icon} />
           </svg>
         </div>
 
-        <h4 class="text-xl font-bold text-[#1a2a3a] mb-3 group-hover:text-[#cd5a37] transition-colors">{service.title}</h4>
-        <p class="text-zinc-500 text-sm leading-relaxed mb-6">{service.description}</p>
+        <h4 class="text-xl font-bold text-[#1a2a3a] mb-3 group-hover:text-[#cd5a37] transition-colors">
+          {service.title}
+        </h4>
 
+        <p class="text-zinc-500 text-sm leading-relaxed mb-6">
+          {service.description}
+        </p>
+
+        {/* Features: cascada sutil cuando la card ya es visible */}
         <ul class="space-y-3">
-          {service.features.map(f => (
-            <li class="flex items-center gap-3 text-[11px] font-bold text-zinc-400 uppercase tracking-wider">
+          {service.features.map((f, i) => (
+            <li
+              class="flex items-center gap-3 text-[11px] font-bold text-zinc-400 uppercase tracking-wider opacity-0 translate-y-2
+                     group-[.is-visible]:opacity-100 group-[.is-visible]:translate-y-0 transition-all duration-500"
+              style={`transition-delay: ${120 + i * 120}ms;`}
+            >
               <span class="w-1.5 h-1.5 rounded-full bg-[#cd5a37]"></span>
               {f}
             </li>

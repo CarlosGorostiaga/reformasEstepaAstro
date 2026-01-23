@@ -18,11 +18,11 @@ import '../styles/global.css';
   <Preloader />
   <Header currentPath="/" />
 
-    {/* HERO HOME (distinto al de servicios) */}
-    <HeroHome
-      title="Reformas con acabado profesional,<br/><span style='color:#cd5a37'>sin líos</span>."
-      subtitle="Trato directo conmigo desde el primer día. Te digo lo que se puede hacer, cuánto cuesta y en qué plazo."
-    />
+  {/* HERO HOME - sin animación, aparece inmediatamente */}
+  <HeroHome
+    title="Reformas con acabado profesional,<br/><span style='color:#cd5a37'>sin líos</span>."
+    subtitle="Trato directo conmigo desde el primer día. Te digo lo que se puede hacer, cuánto cuesta y en qué plazo."
+  />
   
   <main class="max-w-7xl mx-auto pb-20 md:pb-8">
     
@@ -30,8 +30,8 @@ import '../styles/global.css';
     <section id="sobre-mi" class="px-4 py-16">
       <div class="grid lg:grid-cols-2 gap-12 items-center">
         
-        {/* Imagen */}
-        <div class="order-2 lg:order-1">
+        {/* Imagen - anima desde la izquierda */}
+        <div class="order-2 lg:order-1 animate-on-scroll animate-slide-left">
           <div class="relative">
             <div class="aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
               <img 
@@ -50,8 +50,8 @@ import '../styles/global.css';
           </div>
         </div>
 
-        {/* Contenido */}
-        <div class="order-1 lg:order-2">
+        {/* Contenido - anima desde la derecha */}
+        <div class="order-1 lg:order-2 animate-on-scroll animate-slide-right">
           <span class="inline-block px-4 py-2 mb-4 text-xs font-black tracking-widest uppercase bg-[#cd5a37]/10 text-[#cd5a37] rounded-full">
             Sobre mí
           </span>
@@ -71,22 +71,22 @@ import '../styles/global.css';
             para que todo quede coordinado y con un acabado fino.
           </p>
 
-          {/* Especialidades (más limpio) */}
+          {/* Especialidades - con delays escalonados */}
           <div class="grid grid-cols-2 gap-3 mb-8">
             {[
               "Pintura y alisado",
               "Albañilería",
               "Fontanería",
               "Reformas completas"
-            ].map((item) => (
-              <div class="flex items-center gap-2">
+            ].map((item, index) => (
+              <div class={`flex items-center gap-2 animate-on-scroll delay-${(index + 1) * 100}`}>
                 <span class="w-2 h-2 rounded-full bg-[#cd5a37]"></span>
                 <span class="text-sm font-semibold text-[#1a2a3a]">{item}</span>
               </div>
             ))}
           </div>
 
-          {/* CTAs de sección (no repetir lo del hero, pero sí guiar) */}
+          {/* CTAs de sección */}
           <div class="flex flex-col sm:flex-row gap-3">
             <a 
               href="/contacto"
@@ -112,48 +112,57 @@ import '../styles/global.css';
       </div>
     </section>
     
-    {/* SERVICIOS */}
-    <section id="servicios">
+    {/* SERVICIOS - fade in simple */}
+    <section id="servicios" class="animate-on-scroll">
       <ServicesGrid linkToDetails={true} />
     </section>
     
-    {/* PROYECTOS */}
-    <section id="proyectos">
+    {/* PROYECTOS - fade in simple */}
+    <section id="proyectos" class="animate-on-scroll">
       <ProjectsCarousel />
     </section>
 
     {/* TESTIMONIOS */}
     <section id="opiniones" class="px-4 py-20 bg-zinc-50">
       <div class="max-w-5xl mx-auto text-center">
-        <span class="text-[#cd5a37] font-black tracking-widest uppercase text-xs">Opiniones reales</span>
-        <h2 class="text-3xl md:text-4xl font-black text-[#1a2a3a] mt-2 mb-12">
-          Lo que dicen mis clientes
-        </h2>
+        {/* Encabezado - fade in */}
+        <div class="animate-on-scroll">
+          <span class="text-[#cd5a37] font-black tracking-widest uppercase text-xs">Opiniones reales</span>
+          <h2 class="text-3xl md:text-4xl font-black text-[#1a2a3a] mt-2 mb-12">
+            Lo que dicen mis clientes
+          </h2>
+        </div>
 
+        {/* Testimonios - aparecen escalonados */}
         <div class="grid md:grid-cols-2 gap-8">
-          <Testimonial 
-            text="Transformaron nuestra vieja cocina en una obra maestra moderna. Profesionales de principio a fin."
-            author="Elena Rodríguez"
-            service="Reforma de Cocina"
-            rating={5}
-          />
-          <Testimonial 
-            text="Estepa es un crack. Reformó mi baño en tiempo récord y quedó perfecto. Trato cercano y precio justo."
-            author="Carlos Martín"
-            service="Reforma de Baño"
-            rating={5}
-          />
+          <div class="animate-on-scroll delay-100">
+            <Testimonial 
+              text="Transformaron nuestra vieja cocina en una obra maestra moderna. Profesionales de principio a fin."
+              author="Elena Rodríguez"
+              service="Reforma de Cocina"
+              rating={5}
+            />
+          </div>
+          <div class="animate-on-scroll delay-200">
+            <Testimonial 
+              text="Estepa es un crack. Reformó mi baño en tiempo récord y quedó perfecto. Trato cercano y precio justo."
+              author="Carlos Martín"
+              service="Reforma de Baño"
+              rating={5}
+            />
+          </div>
         </div>
         
-        <div class="mt-10 flex items-center justify-center gap-2 opacity-60">
+        {/* Badge de Google - fade in con delay */}
+        <div class="mt-10 flex items-center justify-center gap-2 opacity-60 animate-on-scroll delay-300">
           <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12.48 10.92v3.28h4.78c-.19 1.02-1.2 3.08-4.78 3.08-3.09 0-5.61-2.56-5.61-5.71s2.52-5.71 5.61-5.71c1.76 0 2.94.75 3.61 1.39l2.58-2.49C16.99 2.59 14.92 1.5 12.48 1.5 6.69 1.5 2 6.2 2 12s4.69 10.5 10.48 10.5c5.96 0 10.28-4.13 10.28-10.19 0-.69-.07-1.21-.16-1.73h-10.12z"/></svg>
           <span class="text-sm font-medium">Reseñas verificadas de clientes</span>
         </div>
       </div>
     </section>
 
-    {/* CTA FINAL (perfecto como lo tienes, solo un pelín menos “gradiente agresivo”) */}
-    <section class="px-4 py-8">
+    {/* CTA FINAL - zoom in para llamar la atención */}
+    <section class="px-4 py-8 animate-on-scroll animate-scale">
       <div class="bg-[#1a2a3a] rounded-2xl p-8 lg:p-12 text-center text-white shadow-2xl relative overflow-hidden">
         <div class="absolute inset-0 opacity-40">
           <div class="absolute -top-24 -right-24 w-80 h-80 rounded-full bg-[#cd5a37]/40 blur-3xl"></div>
@@ -194,6 +203,7 @@ import '../styles/global.css';
     </section>
   </main>
 
+  {/* Footer components - sin animación, aparecen normalmente */}
   <FAQ />
   <ZonasTrabajo />
   <Footer />

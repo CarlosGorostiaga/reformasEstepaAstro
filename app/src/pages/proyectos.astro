@@ -14,10 +14,29 @@ import ZonasTrabajo from '../components/ZonasTrabajo.astro';
   title="Proyectos - Estepa Reformas"
   description="Descubre nuestros proyectos de reformas: cocinas, baños, pintura y reformas integrales."
 >
-  <Header />
+  <Header currentPath="/proyectos" />
   
   <main class="min-h-screen pb-24">
-    <ProjectsGallery />
+
+    <section class="py-16 md:py-20">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-12 animate-on-scroll">
+          <span class="text-[#cd5a37] font-bold tracking-widest text-xs uppercase">Proyectos</span>
+          <h1 class="text-4xl md:text-5xl font-black text-[#1a2a3a] mt-2 tracking-tighter">
+            Trabajos reales, resultados finos
+          </h1>
+          <p class="mt-4 text-lg text-zinc-600 max-w-2xl mx-auto font-medium">
+            Fotos reales de reformas terminadas: cocinas, baños, pintura y reformas integrales.
+          </p>
+        </div>
+
+        {/* Animación del bloque completo */}
+        <div class="animate-on-scroll delay-200">
+          <ProjectsGallery />
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <FAQ />

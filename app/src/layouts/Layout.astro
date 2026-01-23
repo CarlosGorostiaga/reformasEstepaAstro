@@ -20,7 +20,25 @@ const {
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <title>{title}</title>
   </head>
+
   <body class="bg-[#f6f5f3] font-[Inter,system-ui,sans-serif] text-[#1a2a3a] antialiased">
     <slot />
+
+    <!-- Scroll animations -->
+    <script type="module">
+      import { initScrollAnimations } from "../scripts/scroll-animations.js";
+
+      const run = () => initScrollAnimations();
+
+      // Primera carga
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", run, { once: true });
+      } else {
+        run();
+      }
+
+      // Si tienes navegación tipo SPA / View Transitions en Astro
+      document.addEventListener("astro:page-load", run);
+    </script>
   </body>
 </html>

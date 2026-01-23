@@ -10,6 +10,12 @@ import FAQ from '../components/Faq.astro';
 import ZonasTrabajo from '../components/ZonasTrabajo.astro';
 import WhatIDontDo from '../components/WhatIDontDo.astro';
 import '../styles/global.css';
+
+// helper simple para delays (usa tus clases delay-100..delay-500)
+const delayClass = (i: number) => {
+  const delays = ['delay-100', 'delay-200', 'delay-300', 'delay-400', 'delay-500'];
+  return delays[i % delays.length];
+};
 ---
 
 <Layout 
@@ -37,8 +43,8 @@ import '../styles/global.css';
         <div class="grid lg:grid-cols-12 gap-12 items-center">
           
           {/* IZQUIERDA */}
-          <div class="lg:col-span-7 text-white">
-            <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/10 border border-white/15 backdrop-blur-md">
+          <div class="lg:col-span-7 text-white animate-slide-left">
+            <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/10 border border-white/15 backdrop-blur-md animate-fade-in delay-100">
               <span class="text-[10px] font-black tracking-[0.25em] uppercase">Servicios</span>
               <span class="w-1 h-1 rounded-full bg-white/40"></span>
               <span class="text-[12px] text-white/80 font-medium">
@@ -46,12 +52,12 @@ import '../styles/global.css';
               </span>
             </div>
 
-            <h1 class="mt-6 text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter leading-[0.95]">
+            <h1 class="mt-6 text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter leading-[0.95] animate-on-scroll delay-100">
               Reformas con acabado profesional,
               <span class="text-[#cd5a37]"> sin líos</span>.
             </h1>
 
-            <p class="mt-5 text-base md:text-lg text-white/75 max-w-xl leading-relaxed">
+            <p class="mt-5 text-base md:text-lg text-white/75 max-w-xl leading-relaxed animate-on-scroll delay-200">
               Trato directo conmigo desde el primer día. Te digo lo que se puede hacer,
               cuánto cuesta y en qué plazo.
             </p>
@@ -63,15 +69,15 @@ import '../styles/global.css';
                 "Visita y medición",
                 "Trabajo limpio",
                 "Sin intermediarios"
-              ].map((t) => (
-                <span class="px-4 py-2 rounded-full bg-white/10 border border-white/10 text-[12px] font-semibold text-white/85">
+              ].map((t, i) => (
+                <span class={`px-4 py-2 rounded-full bg-white/10 border border-white/10 text-[12px] font-semibold text-white/85 animate-fade-in ${delayClass(i)}`}>
                   {t}
                 </span>
               ))}
             </div>
 
             {/* CTAs */}
-            <div class="mt-10 flex flex-col sm:flex-row gap-4">
+            <div class="mt-10 flex flex-col sm:flex-row gap-4 animate-on-scroll delay-300">
               <a 
                 href="/contacto"
                 class="bg-[#cd5a37] text-white font-black px-8 py-4 rounded-2xl hover:bg-[#b54f30] transition-all shadow-2xl shadow-orange-900/30"
@@ -89,11 +95,11 @@ import '../styles/global.css';
           </div>
 
           {/* DERECHA */}
-          <div class="lg:col-span-5">
+          <div class="lg:col-span-5 animate-slide-right">
             <div class="relative">
               <div class="absolute -inset-4 rounded-[2.5rem] border border-white/10"></div>
 
-              <div class="relative rounded-[2rem] overflow-hidden shadow-2xl aspect-[4/3] bg-black/20">
+              <div class="relative rounded-[2rem] overflow-hidden shadow-2xl aspect-[4/3] bg-black/20 animate-scale delay-100">
                 <img 
                   src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=1000"
                   alt="Trabajo de reforma"
@@ -103,7 +109,7 @@ import '../styles/global.css';
               </div>
 
               {/* Tarjeta flotante */}
-              <div class="absolute -bottom-6 left-6 right-6 bg-white rounded-2xl p-5 shadow-xl">
+              <div class="absolute -bottom-6 left-6 right-6 bg-white rounded-2xl p-5 shadow-xl animate-scale delay-300">
                 <div class="flex items-start justify-between gap-4">
                   <div>
                     <p class="text-[#1a2a3a] font-black text-sm uppercase tracking-wide">
@@ -134,7 +140,7 @@ import '../styles/global.css';
     {/* GRID SERVICIOS */}
     <section id="servicios" class="py-24 bg-[#f6f5f3]">
       <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center mb-16">
+        <div class="text-center mb-16 animate-on-scroll">
           <span class="text-[#cd5a37] font-bold tracking-widest text-xs uppercase">Especialidades</span>
           <h2 class="text-4xl lg:text-5xl font-black text-[#1a2a3a] mt-2 mb-6 tracking-tighter">
             ¿Qué necesitas reformar?
@@ -148,6 +154,7 @@ import '../styles/global.css';
           </p>
         </div>
         
+        {/* El componente ya viene con animate-on-scroll en cada card */}
         <ServicesGrid showTitle={false} linkToDetails={true} />
       </div>
     </section>
@@ -155,7 +162,7 @@ import '../styles/global.css';
     {/* CÓMO TRABAJO */}
     <section class="py-24 bg-white relative">
       <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center mb-20">
+        <div class="text-center mb-20 animate-on-scroll">
           <h2 class="text-4xl lg:text-5xl font-black text-[#1a2a3a] tracking-tighter mb-4">
             ¿Cómo Trabajo?
           </h2>
@@ -170,8 +177,8 @@ import '../styles/global.css';
             { n: "2", t: "Visita", d: "Visito tu hogar para tomar medidas y entender lo que necesitas." },
             { n: "3", t: "Presupuesto", d: "Recibes un presupuesto detallado sin compromiso en 24-48h." },
             { n: "4", t: "Ejecución", d: "Realizo la reforma en los plazos acordados con calidad garantizada." }
-          ].map((step) => (
-            <div class="group text-center">
+          ].map((step, i) => (
+            <div class={`group text-center animate-on-scroll ${delayClass(i)}`}>
               <div class="w-20 h-20 rounded-[2rem] bg-[#1a2a3a] text-white flex items-center justify-center text-3xl font-black mb-8 mx-auto group-hover:bg-[#cd5a37] group-hover:rotate-12 transition-all duration-500 shadow-xl">
                 {step.n}
               </div>
@@ -189,7 +196,7 @@ import '../styles/global.css';
     <section class="py-24 bg-[#f6f5f3] overflow-hidden">
       <div class="max-w-7xl mx-auto px-6">
         <div class="grid lg:grid-cols-2 gap-16 items-center">
-          <div class="relative group">
+          <div class="relative group animate-slide-left">
             <div class="absolute -inset-4 border-2 border-[#cd5a37]/20 rounded-[2.5rem] group-hover:scale-105 transition-transform duration-700"></div>
             <div class="relative rounded-[2rem] overflow-hidden shadow-2xl aspect-[4/3]">
               <img 
@@ -201,7 +208,7 @@ import '../styles/global.css';
             </div>
           </div>
 
-          <div>
+          <div class="animate-on-scroll">
             <span class="inline-block px-4 py-1.5 mb-6 text-[10px] font-bold tracking-widest uppercase bg-[#cd5a37]/10 text-[#cd5a37] rounded-lg">
               La diferencia Estepa
             </span>
@@ -227,8 +234,8 @@ import '../styles/global.css';
                   d: "Presupuestos transparentes sin sorpresas ni costes ocultos.",
                   icon: "M10 18a8 8 0 100-16 8 8 0 000 16zm1-13a1 1 0 10-2 0v.092a4.535 4.535 0 00-1.676.662C6.602 6.234 6 7.009 6 8c0 .99.602 1.765 1.324 2.246.48.32 1.054.545 1.676.662v1.941c-.391-.127-.68-.317-.843-.504a1 1 0 10-1.51 1.31c.562.649 1.413 1.076 2.353 1.253V15a1 1 0 102 0v-.092a4.535 4.535 0 001.676-.662C13.398 13.766 14 12.991 14 12c0-.99-.602-1.765-1.324-2.246A4.535 4.535 0 0011 9.092V7.151c.391.127.68.317.843.504a1 1 0 101.511-1.31c-.563-.649-1.413-1.076-2.354-1.253V5z"
                 }
-              ].map((item) => (
-                <div class="flex gap-6 group/item">
+              ].map((item, i) => (
+                <div class={`flex gap-6 group/item animate-on-scroll ${delayClass(i)}`}>
                   <div class="flex-shrink-0 w-14 h-14 rounded-2xl bg-white flex items-center justify-center shadow-sm group-hover/item:bg-[#cd5a37] transition-all duration-300">
                     <svg class="w-6 h-6 text-[#cd5a37] group-hover/item:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24">
                       <path d={item.icon}/>
@@ -248,7 +255,7 @@ import '../styles/global.css';
 
     {/* CTA FINAL */}
     <section class="py-32 bg-white text-center">
-      <div class="max-w-4xl mx-auto px-6">
+      <div class="max-w-4xl mx-auto px-6 animate-on-scroll">
         <h2 class="text-4xl md:text-6xl font-black text-[#1a2a3a] mb-6 tracking-tighter">
           ¿Hablamos de tu <span class="text-[#cd5a37]">próximo proyecto</span>?
         </h2>
@@ -275,8 +282,8 @@ import '../styles/global.css';
     </section>
 
   </main>
-  <WhatIDontDo />
 
+  <WhatIDontDo />
   <FAQ />
   <ZonasTrabajo />
   <Footer />

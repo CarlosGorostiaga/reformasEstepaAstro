@@ -1,0 +1,206 @@
+---
+export interface Props {
+  name?: string;
+  city?: string;
+  years?: string;
+
+  imageUrl?: string;
+  imageAlt?: string;
+
+  ctaPrimaryHref?: string;
+  ctaPrimaryText?: string;
+  ctaSecondaryHref?: string;
+  ctaSecondaryText?: string;
+
+  specialties?: string[];
+
+  qualityTitle?: string;
+  qualitySubtitle?: string;
+}
+
+const {
+  name = "Samuel Estepa",
+  city = "Madrid",
+  years = "5+",
+
+  imageUrl = "/img/pintor.webp",
+  imageAlt = "Samuel Estepa trabajando en una reforma",
+
+  ctaPrimaryHref = "/contacto",
+  ctaPrimaryText = "Hablemos",
+  ctaSecondaryHref = "#proyectos",
+  ctaSecondaryText = "Ver trabajos",
+
+  specialties = ["Pintura y alisado", "Albañilería", "Fontanería", "Reformas completas"],
+
+  qualityTitle = "Garantía de calidad",
+  qualitySubtitle = "Compromiso en cada detalle",
+} = Astro.props;
+
+const brand = "#cd5a37";
+---
+
+<section id="sobre-mi" class="px-4 py-16 animate-on-scroll aboutme">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+
+      <!-- IMAGEN -->
+      <div class="lg:col-span-5 order-2 lg:order-1 animate-slide-left">
+        <div class="relative max-w-md mx-auto lg:mx-0">
+
+          <!-- Marco suave -->
+          <div class="absolute -inset-3 rounded-[28px] bg-white/70 border border-zinc-200/70 shadow-[0_25px_60px_-35px_rgba(0,0,0,.35)]"></div>
+
+          <!-- Foto -->
+          <div class="relative rounded-[24px] overflow-hidden border border-white/60 shadow-2xl">
+            <div class="aspect-[3/4] bg-white">
+              <img
+                src={imageUrl}
+                alt={imageAlt}
+                class="w-full h-full object-cover"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+
+            <!-- Degradado muy sutil abajo para apoyar la tarjeta -->
+            <div class="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/12 to-transparent"></div>
+          </div>
+
+          <!-- Badge años (más fino y elegante) -->
+          <div
+            class="absolute -top-4 left-6 z-20 inline-flex items-center gap-3 px-4 py-3 rounded-2xl shadow-xl border"
+            style={`background:${brand};border-color:rgba(255,255,255,.35);`}
+          >
+            <div class="leading-none">
+              <div class="text-2xl font-black text-white">{years}</div>
+              <div class="text-[10px] font-black tracking-widest uppercase text-white/85">
+                AÑOS EXP.
+              </div>
+            </div>
+            <div class="h-9 w-px bg-white/25"></div>
+            <div class="text-[11px] font-semibold text-white/90 leading-tight">
+              Profesional<br />de confianza
+            </div>
+          </div>
+
+          <!-- Tarjeta garantía (más compacta, no a todo el ancho) -->
+          <div class="absolute bottom-4 left-4 z-20">
+            <div class="bg-white/80 backdrop-blur border border-white/70 shadow-xl rounded-2xl px-4 py-3 w-[320px] max-w-[calc(100vw-3rem)]">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full flex items-center justify-center" style={`background:${brand}1f;`}>
+                  <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" style={`color:${brand};`} aria-hidden="true">
+                    <path d="M12 2a10 10 0 100 20 10 10 0 000-20zm-1 14l-4-4 1.4-1.4L11 13.2l5.6-5.6L18 9l-7 7z"/>
+                  </svg>
+                </div>
+                <div>
+                  <p class="text-[#1a2a3a] font-black text-sm">{qualityTitle}</p>
+                  <p class="text-zinc-600 text-xs">{qualitySubtitle}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Glow suave -->
+          <div class="pointer-events-none absolute -bottom-10 -right-10 w-52 h-52 rounded-full blur-3xl opacity-20" style={`background:${brand};`}></div>
+        </div>
+      </div>
+
+      <!-- TEXTO -->
+      <div class="lg:col-span-7 order-1 lg:order-2 animate-slide-right">
+        <span
+          class="inline-flex items-center gap-3 px-4 py-2 rounded-full border mb-6"
+          style={`background:${brand}10;border-color:${brand}33;`}
+        >
+          <span class="w-2 h-2 rounded-full animate-ping" style={`background:${brand};`}></span>
+          <span class="font-black tracking-widest uppercase text-xs" style={`color:${brand};`}>Sobre mí</span>
+        </span>
+
+        <h2 class="text-4xl md:text-5xl lg:text-6xl font-black text-[#1a2a3a] mb-6 tracking-tight leading-[1.02]">
+          Más que reformas,<br />
+          <span style={`color:${brand};`}>trabajo bien hecho</span>
+        </h2>
+
+        <div class="space-y-4 max-w-2xl">
+          <p class="text-lg md:text-xl text-zinc-700 leading-relaxed">
+            Soy <span class="signature" style={`color:${brand};`}>{name}</span>, profesional de las reformas en {city}.
+            Me implico personalmente en cada proyecto: desde la primera visita hasta el último remate.
+          </p>
+
+          <p class="text-lg text-zinc-700 leading-relaxed">
+            <strong class="text-[#1a2a3a]">Pintor, albañil, fontanero y manitas</strong>.
+            Un solo profesional, sin subcontratas, para que todo quede coordinado y con un acabado fino.
+          </p>
+        </div>
+
+        <!-- Chips más finas -->
+        <div class="flex flex-wrap gap-3 mt-8 mb-10">
+          {specialties.map((s, i) => (
+            <span
+              class={`chip px-5 py-2 rounded-full border text-sm font-semibold text-[#1a2a3a] bg-white/80 backdrop-blur transition-all cursor-default delay-${(i + 1) * 100}`}
+              style={`border-color:${brand}55;`}
+            >
+              {s}
+            </span>
+          ))}
+        </div>
+
+        <!-- CTAs (más consistentes) -->
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a
+            href={ctaPrimaryHref}
+            class="inline-flex items-center justify-center gap-2 text-white font-black px-7 py-3.5 rounded-xl transition-all shadow-lg hover:-translate-y-[1px]"
+            style={`background:${brand};`}
+          >
+            {ctaPrimaryText}
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+            </svg>
+          </a>
+
+          <a
+            href={ctaSecondaryHref}
+            class="inline-flex items-center justify-center gap-2 bg-white/80 backdrop-blur border border-zinc-200 hover:bg-white text-[#1a2a3a] font-black px-7 py-3.5 rounded-xl transition-all"
+          >
+            {ctaSecondaryText}
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <style>
+    .signature{
+      font-family: "Dancing Script", ui-serif, Georgia, "Times New Roman", serif;
+      font-weight: 600;
+      font-size: 1.45em;
+      display: inline-block;
+      transform: rotate(-2deg);
+      margin: 0 0.12rem;
+      line-height: 1;
+    }
+
+    /* animación sincronizada con tu scroll-animations.js */
+    .aboutme.is-visible .signature{
+      animation: signaturePop .65s ease-out both;
+    }
+    @keyframes signaturePop{
+      from { opacity: 0; transform: translateY(8px) rotate(-2deg); }
+      to   { opacity: 1; transform: translateY(0) rotate(-2deg); }
+    }
+
+    .chip:hover{
+      background: #cd5a37;
+      border-color: #cd5a37;
+      color: #fff;
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      .aboutme.is-visible .signature{ animation: none; }
+    }
+  </style>
+</section>

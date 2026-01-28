@@ -7,129 +7,132 @@ interface Props {
   secondaryHref?: string;
   whatsappHref?: string;
   backgroundImageUrl?: string;
+  locationLabel?: string;
 }
 
 const {
   title,
   subtitle,
-  primaryHref = '/contacto',
-  secondaryHref = '/servicios',
-  whatsappHref = 'https://wa.me/34600123456',
-  backgroundImageUrl = 'https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?w=1600'
+  primaryHref = "/contacto",
+  secondaryHref = "/servicios",
+  // ✅ número real de Samu
+  whatsappHref = "https://wa.me/34633680002",
+  backgroundImageUrl = "https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?w=1600",
+  locationLabel = "ESTEPA REFORMAS · Madrid"
 } = Astro.props;
 
 const bullets = [
   { t: "Trato directo", d: "Hablas conmigo, no con una empresa." },
   { t: "Presupuesto 24–48h", d: "Claro, detallado y sin compromiso." },
-  { t: "Sin subcontratas", d: "Trabajo personal en cada proyecto." }
+  { t: "Sin subcontratas", d: "Trabajo personal en cada proyecto." },
 ];
 ---
 
-<section class="relative w-full overflow-hidden bg-[#1a2a3a] text-white">
-
-  {/* Fondo con imagen + overlay */}
-  <div class="absolute inset-0">
+<section class="relative w-full overflow-hidden text-white">
+  {/* Fondo + overlay tipo Stitch (gradient lateral) */}
+  <div class="absolute inset-0 z-0">
     <img
       src={backgroundImageUrl}
       alt=""
-      class="w-full h-full object-cover opacity-60 scale-105 saturate-105 contrast-110"
+      class="w-full h-full object-cover object-center opacity-95 scale-105 saturate-105 contrast-110"
       loading="eager"
       decoding="async"
     />
+    {/* Oscurecer izquierda para legibilidad */}
+    <div class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/35 to-black/10"></div>
+    {/* Toque rústico ámbar/rust */}
+    <div class="absolute inset-0 bg-gradient-to-tr from-[#E07A5F]/18 via-transparent to-transparent"></div>
 
-    <div class="absolute inset-0 bg-gradient-to-br 
-                from-[#1a2a3a]/55 
-                via-[#1a2a3a]/70 
-                to-[#1a2a3a]/85"></div>
-
-    <div class="absolute inset-0 bg-gradient-to-tr from-[#cd5a37]/12 via-transparent to-transparent"></div>
+    {/* Textura muy sutil “cemento/kraft” (sin assets externos) */}
+    <div class="absolute inset-0 opacity-[0.06] mix-blend-overlay pointer-events-none"
+      style="background-image: radial-gradient(circle at 20% 20%, #fff 0, transparent 25%),
+             radial-gradient(circle at 80% 40%, #fff 0, transparent 22%),
+             radial-gradient(circle at 30% 85%, #fff 0, transparent 18%);">
+    </div>
   </div>
 
-  {/* Contenido centrado (✅ más compacto) */}
-  <div class="relative z-10 max-w-7xl mx-auto px-4 pt-10 pb-10 lg:pt-14 lg:pb-10">
-    <div class="max-w-4xl">
-
+  {/* Contenedor */}
+  <div class="relative z-10 max-w-7xl mx-auto px-4 pt-10 pb-10 lg:pt-14 lg:pb-10 min-h-[88vh] flex flex-col">
+    {/* Badge superior */}
+    <div class="flex items-center gap-3">
       <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/15 text-[11px] font-black tracking-[0.25em] uppercase">
-        Estepa Reformas · Madrid
+        {locationLabel}
       </span>
 
-      <h1
-        class="mt-5 text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter leading-[0.98]"
-        set:html={title}
-      ></h1>
-
-      <p class="mt-4 text-base md:text-lg text-white/80 max-w-2xl leading-relaxed">
-        {subtitle}
-      </p>
-
-      {/* CTAs (✅ menos “tocho” en móvil) */}
-      <div class="mt-8 flex flex-col sm:flex-row gap-3">
-        <a
-          href={primaryHref}
-          class="bg-[#cd5a37] text-white font-black px-7 py-3.5 rounded-2xl hover:bg-[#b54f30] transition-all shadow-2xl shadow-orange-900/30 text-center"
-        >
-          Pedir presupuesto
-        </a>
-
-        <a
-          href={whatsappHref}
-          target="_blank"
-          class="bg-[#25D366] text-white font-black px-7 py-3.5 rounded-2xl hover:brightness-110 transition-all text-center"
-        >
-          WhatsApp
-        </a>
-
-        <a
-          href={secondaryHref}
-          class="bg-white/10 text-white font-bold px-7 py-3.5 rounded-2xl hover:bg-white/15 transition-all border border-white/15 text-center"
-        >
-          Ver servicios →
-        </a>
-      </div>
-
-      {/* beneficios (✅ en móvil 1 col para no “romper” y en desktop 3 col) */}
-      <div class="mt-9 grid grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-6">
-        {bullets.map((b) => (
-          <div class="rounded-2xl bg-white/10 border border-white/10 p-4 lg:p-5 backdrop-blur-[2px]">
-            <p class="font-black text-sm">{b.t}</p>
-            <p class="text-white/75 text-sm mt-1">{b.d}</p>
-          </div>
-        ))}
-      </div>
-
+      {/* “Sello” rústico */}
+      <span class="hidden sm:inline-flex items-center px-3 py-2 rounded-full border border-white/15 bg-black/20 text-[11px] font-black tracking-[0.22em] uppercase">
+        OBRA REAL
+      </span>
     </div>
-  </div>
 
-  {/* ✅ tira de imágenes SOLO en web (lg+) */}
-  <div class="relative z-10 w-full bg-black/10 hidden lg:block">
-    <div class="max-w-7xl mx-auto px-4 pb-4">
-      <div class="grid grid-cols-3 gap-2">
-        <div class="aspect-[4/3] rounded-xl overflow-hidden">
-          <img
-            src="https://images.unsplash.com/photo-1621905251918-48416bd8575a?w=900"
-            alt="Trabajo de reforma"
-            class="w-full h-full object-cover"
-            loading="lazy"
-          />
+    {/* Contenido principal */}
+    <div class="flex-1 flex items-center">
+      <div class="max-w-4xl">
+        <h1
+          class="mt-6 text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter leading-[0.98]"
+          set:html={title}
+        />
+
+        <p class="mt-4 text-base md:text-lg text-white/85 max-w-2xl leading-relaxed">
+          {subtitle}
+        </p>
+
+        {/* CTAs */}
+        <div class="mt-8 flex flex-col sm:flex-row gap-3">
+          <a
+            href={primaryHref}
+            class="bg-[#E07A5F] text-white font-black px-7 py-3.5 rounded-2xl hover:bg-[#C86443] transition-all shadow-2xl shadow-orange-900/30 text-center"
+          >
+            Pedir presupuesto
+          </a>
+
+          <a
+            href={whatsappHref}
+            target="_blank"
+            class="bg-[#25D366] text-white font-black px-7 py-3.5 rounded-2xl hover:brightness-110 transition-all text-center"
+          >
+            WhatsApp
+          </a>
+
+          <a
+            href={secondaryHref}
+            class="bg-white/10 text-white font-bold px-7 py-3.5 rounded-2xl hover:bg-white/15 transition-all border border-white/15 text-center"
+          >
+            Ver servicios →
+          </a>
         </div>
-        <div class="aspect-[4/3] rounded-xl overflow-hidden">
-          <img
-            src="https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?w=900"
-            alt="Reforma"
-            class="w-full h-full object-cover"
-            loading="lazy"
-          />
+
+        {/* Bullets “glass” estilo Stitch */}
+        <div class="mt-9 grid grid-cols-1 sm:grid-cols-3 gap-4 lg:gap-6">
+          {bullets.map((b) => (
+            <article class="rounded-2xl bg-white/10 border border-white/15 p-4 lg:p-5 backdrop-blur-[10px] transition-transform hover:-translate-y-1 hover:bg-white/15">
+              <p class="font-black text-sm">{b.t}</p>
+              <p class="text-white/80 text-sm mt-1 leading-relaxed">{b.d}</p>
+            </article>
+          ))}
         </div>
-        <div class="aspect-[4/3] rounded-xl overflow-hidden">
-          <img
-            src="https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?w=900"
-            alt="Acabados"
-            class="w-full h-full object-cover"
-            loading="lazy"
-          />
-        </div>
+
+        {/* Mini nota rústica (sutil) */}
+        <p class="mt-6 text-xs text-white/70 tracking-wide">
+          * Te digo lo bueno y lo malo antes de empezar. Sin sorpresas.
+        </p>
       </div>
     </div>
-  </div>
 
+    {/* Footer tipo Stitch: “Ver servicios” */}
+    <a
+      href={secondaryHref}
+      class="mt-8 flex flex-col items-center justify-center pb-2 opacity-85 hover:opacity-100 transition-opacity"
+      aria-label="Ver servicios"
+    >
+      <span class="text-[11px] font-light uppercase tracking-[0.35em] text-white/70">
+        Ver servicios
+      </span>
+      <span class="mt-2 inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/10 border border-white/15">
+        <svg class="w-5 h-5 animate-bounce" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v14m0 0l-6-6m6 6l6-6"/>
+        </svg>
+      </span>
+    </a>
+  </div>
 </section>

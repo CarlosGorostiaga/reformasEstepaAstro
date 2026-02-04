@@ -68,7 +68,12 @@ const imageUrl = new URL(image, site);
     <script type="module">
       import { initScrollAnimations } from "../scripts/scroll-animations.js";
 
-      const run = () => initScrollAnimations();
+      const run = () => {
+        if (document.querySelector('[data-disable-scroll-animations="true"]')) {
+          return;
+        }
+        initScrollAnimations();
+      };
 
       // Primera carga
       if (document.readyState === "loading") {

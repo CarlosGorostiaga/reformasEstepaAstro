@@ -1,0 +1,70 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import BottomNav from '../components/BottomNav.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+import '../styles/global.css';
+---
+
+<Layout
+  title="Aviso legal - Estepa Reformas"
+  description="Aviso legal de Estepa Reformas con información sobre titularidad, contacto y condiciones de uso."
+>
+  <Header />
+
+  <main class="min-h-screen pt-10 pb-24">
+    <section class="max-w-4xl mx-auto px-4">
+      <div class="bg-white rounded-2xl shadow-xl p-6 md:p-10 space-y-8">
+        <header class="space-y-2">
+          <span class="text-sm uppercase tracking-widest text-[#cd5a37] font-semibold">Información legal</span>
+          <h1 class="text-3xl md:text-4xl font-bold text-[#1a2a3a]">Aviso legal</h1>
+          <p class="text-zinc-600">
+            Este aviso legal regula el uso del sitio web de Estepa Reformas. Al navegar por esta web aceptas
+            las condiciones aquí descritas.
+          </p>
+        </header>
+
+        <section class="space-y-3">
+          <h2 class="text-xl font-semibold text-[#1a2a3a]">Titular del sitio</h2>
+          <ul class="text-zinc-600 space-y-1">
+            <li><strong>Nombre comercial:</strong> Estepa Reformas</li>
+            <li><strong>Ámbito:</strong> Reformas integrales, cocinas, baños y pintura en Madrid.</li>
+            <li><strong>Contacto:</strong> +34 633 680 002 · contacto@esteparreformas.es</li>
+          </ul>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-xl font-semibold text-[#1a2a3a]">Condiciones de uso</h2>
+          <p class="text-zinc-600">
+            El usuario se compromete a hacer un uso adecuado del sitio web y a no realizar actividades ilícitas
+            o contrarias a la buena fe y al orden público.
+          </p>
+          <p class="text-zinc-600">
+            Estepa Reformas se reserva el derecho de modificar los contenidos del sitio sin previo aviso.
+          </p>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-xl font-semibold text-[#1a2a3a]">Propiedad intelectual</h2>
+          <p class="text-zinc-600">
+            Todos los contenidos (textos, imágenes, diseños y logotipos) son propiedad de Estepa Reformas o se
+            utilizan con autorización. Queda prohibida su reproducción sin consentimiento expreso.
+          </p>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-xl font-semibold text-[#1a2a3a]">Limitación de responsabilidad</h2>
+          <p class="text-zinc-600">
+            Estepa Reformas no se responsabiliza de los posibles daños derivados de la navegación en este sitio
+            ni de la disponibilidad continua del servicio.
+          </p>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+  <WhatsAppButton phoneNumber="34633680002" />
+  <BottomNav currentPath="/legal" />
+</Layout>

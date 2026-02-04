@@ -1,0 +1,67 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import BottomNav from '../components/BottomNav.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+import '../styles/global.css';
+---
+
+<Layout
+  title="Política de privacidad - Estepa Reformas"
+  description="Política de privacidad de Estepa Reformas sobre el tratamiento de datos personales."
+>
+  <Header />
+
+  <main class="min-h-screen pt-10 pb-24">
+    <section class="max-w-4xl mx-auto px-4">
+      <div class="bg-white rounded-2xl shadow-xl p-6 md:p-10 space-y-8">
+        <header class="space-y-2">
+          <span class="text-sm uppercase tracking-widest text-[#cd5a37] font-semibold">Políticas</span>
+          <h1 class="text-3xl md:text-4xl font-bold text-[#1a2a3a]">Política de privacidad</h1>
+          <p class="text-zinc-600">
+            En Estepa Reformas tratamos tus datos con la máxima confidencialidad. Aquí te explicamos cómo los
+            usamos y cuáles son tus derechos.
+          </p>
+        </header>
+
+        <section class="space-y-3">
+          <h2 class="text-xl font-semibold text-[#1a2a3a]">Responsable del tratamiento</h2>
+          <p class="text-zinc-600">
+            Estepa Reformas es la responsable del tratamiento de los datos personales facilitados a través del
+            formulario de contacto y otros canales de comunicación.
+          </p>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-xl font-semibold text-[#1a2a3a]">Finalidad</h2>
+          <ul class="text-zinc-600 space-y-2 list-disc list-inside">
+            <li>Responder a solicitudes de presupuesto y consultas.</li>
+            <li>Gestionar la comunicación comercial solicitada por el usuario.</li>
+            <li>Mejorar la calidad del servicio y la experiencia en la web.</li>
+          </ul>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-xl font-semibold text-[#1a2a3a]">Base legal</h2>
+          <p class="text-zinc-600">
+            La base legal del tratamiento es el consentimiento otorgado al marcar la casilla de aceptación de
+            privacidad y al enviar el formulario.
+          </p>
+        </section>
+
+        <section class="space-y-3">
+          <h2 class="text-xl font-semibold text-[#1a2a3a]">Derechos</h2>
+          <p class="text-zinc-600">
+            Puedes ejercer tus derechos de acceso, rectificación, supresión, oposición y portabilidad enviando
+            un correo a contacto@esteparreformas.es.
+          </p>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+  <WhatsAppButton phoneNumber="34633680002" />
+  <BottomNav currentPath="/privacidad" />
+</Layout>

@@ -15,7 +15,20 @@ import AboutMe from '../components/AboutMe.astro';
 import '../styles/global.css';
 ---
 
-<Layout title="Estepa Reformas - Inicio">
+<Layout
+  title="Estepa Reformas | Reformas integrales en Madrid"
+  description="Reformas integrales, baños y cocinas en Madrid. Presupuesto claro, acabados profesionales y trato directo desde el primer día."
+  schema={{
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    name: 'Estepa Reformas',
+    description:
+      'Reformas integrales, baños y cocinas en Madrid con trato directo, presupuesto transparente y acabados profesionales.',
+    url: 'https://www.estepareformas.es',
+    areaServed: 'Madrid',
+    telephone: '+34 633 680 002'
+  }}
+>
   <Preloader />
   <Header currentPath="/" />
 
@@ -45,6 +58,43 @@ import '../styles/global.css';
     {/* PROYECTOS */}
     <section id="proyectos" class="animate-on-scroll">
       <ProjectsCarousel />
+    </section>
+
+    {/* BENEFICIOS */}
+    <section id="beneficios" class="px-4 py-16 bg-white">
+      <div class="max-w-6xl mx-auto text-center">
+        <div class="animate-on-scroll">
+          <span class="text-[#cd5a37] font-black tracking-widest uppercase text-xs">Diferenciales</span>
+          <h2 class="text-3xl md:text-4xl font-black text-[#1a2a3a] mt-2">
+            Reformas en Madrid con cero sorpresas
+          </h2>
+          <p class="mt-4 text-lg text-[#1a2a3a]/80 max-w-3xl mx-auto">
+            Planificamos cada paso, cuidamos los acabados y te informamos en todo momento para que tu reforma sea
+            tranquila y sin imprevistos.
+          </p>
+        </div>
+
+        <div class="mt-10 grid gap-6 md:grid-cols-3">
+          <div class="bg-[#f6f5f3] rounded-2xl p-6 shadow-sm animate-on-scroll">
+            <h3 class="text-xl font-black text-[#1a2a3a] mb-3">Presupuesto claro</h3>
+            <p class="text-[#1a2a3a]/80">
+              Te explico cada partida para que sepas cuánto cuesta tu reforma y por qué.
+            </p>
+          </div>
+          <div class="bg-[#f6f5f3] rounded-2xl p-6 shadow-sm animate-on-scroll delay-100">
+            <h3 class="text-xl font-black text-[#1a2a3a] mb-3">Coordinación total</h3>
+            <p class="text-[#1a2a3a]/80">
+              Gestión completa de gremios, materiales y tiempos para que no tengas que preocuparte.
+            </p>
+          </div>
+          <div class="bg-[#f6f5f3] rounded-2xl p-6 shadow-sm animate-on-scroll delay-200">
+            <h3 class="text-xl font-black text-[#1a2a3a] mb-3">Acabados premium</h3>
+            <p class="text-[#1a2a3a]/80">
+              Detalles cuidados, limpieza al finalizar y garantía de trabajo bien hecho.
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
 
     {/* TESTIMONIOS */}

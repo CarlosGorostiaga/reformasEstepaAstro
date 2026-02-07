@@ -1,42 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.estepareformas.es/</loc>
+    <loc>https://estepareformas.es/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.estepareformas.es/servicios</loc>
+    <loc>https://estepareformas.es/servicios</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.estepareformas.es/servicios/reformas-integrales</loc>
+    <loc>https://estepareformas.es/servicios/reformas-integrales</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.estepareformas.es/servicios/cocinas</loc>
+    <loc>https://estepareformas.es/servicios/cocinas</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.estepareformas.es/servicios/banos</loc>
+    <loc>https://estepareformas.es/servicios/banos</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.estepareformas.es/servicios/pintura</loc>
+    <loc>https://estepareformas.es/servicios/pintura</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.estepareformas.es/proyectos</loc>
+    <loc>https://estepareformas.es/proyectos</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.estepareformas.es/contacto</loc>
+    <loc>https://estepareformas.es/contacto</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

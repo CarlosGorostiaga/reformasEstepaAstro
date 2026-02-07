@@ -5,7 +5,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: process.env.SITE_URL || 'https://www.estepareformas.es',
+  site: process.env.SITE_URL || 'https://estepareformas.es',
   vite: {
     plugins: [tailwindcss()]
   }

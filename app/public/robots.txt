@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.estepareformas.es/sitemap.xml
+Sitemap: https://estepareformas.es/sitemap.xml
